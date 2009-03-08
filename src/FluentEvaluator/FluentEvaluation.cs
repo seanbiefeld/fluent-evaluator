@@ -1,7 +1,4 @@
-﻿using System;
-using System.Reflection;
-
-namespace FluentEvaluator
+﻿namespace FluentEvaluator
 {
 	public class FluentEvaluation<TypeToPerformEvaluationOn> : IFluentEvaluation<TypeToPerformEvaluationOn>
 	{
@@ -12,13 +9,13 @@ namespace FluentEvaluator
 
 		#region properties
 
-		private object ObjectToEvaluate
+		protected virtual object ObjectToEvaluate
 		{
 			get;
 			set;
 		}
 
-		private bool EvaluationToPerform
+		protected virtual bool EvaluationToPerform
 		{
 			get;
 			set;

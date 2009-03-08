@@ -29,11 +29,13 @@ namespace FluentEvaluator.Tests
 		}
 	}
 
-	public class TestableException : Exception{}
-
-	public class FluentEvalutionSpecs : ContextSpecification
+	public class TestableException : Exception
 	{
-		protected TestableFoo _testableFooToTest;
+	}
+
+	public class EvaluationActionsSpecs : ContextSpecification
+	{
+		protected TestableFoo _testableFoo;
 		protected string _testableString;
 	}
 
@@ -41,100 +43,100 @@ namespace FluentEvaluator.Tests
 
 	[TestFixture]
 	[Concern("Fluent Evaluator")]
-	public class when_creating_on_null : FluentEvalutionSpecs
+	public class when_creating_on_null : EvaluationActionsSpecs
 	{
 		protected override void Context()
 		{
-			_testableFooToTest = null;
+			_testableFoo = null;
 
-			_testableFooToTest = _testableFooToTest.When<TestableFoo>().IsNull().Create();
+			_testableFoo = _testableFoo.When<TestableFoo>().IsNull().Create();
 		}
 
 		[Test]
 		[Observation]
 		public void should_be_a_new_instance()
 		{
-			_testableFooToTest.ShouldNotBeNull();
+			_testableFoo.ShouldNotBeNull();
 		}
 	}
 
 	[TestFixture]
 	[Concern("Fluent Evaluator")]
-	public class when_creating_on_non_null : FluentEvalutionSpecs
+	public class when_creating_on_non_null : EvaluationActionsSpecs
 	{
 		protected TestableFoo newFoo;
 
 		protected override void Context()
 		{
-			_testableFooToTest = new TestableFoo();
+			_testableFoo = new TestableFoo();
 
-			newFoo = _testableFooToTest.When<TestableFoo>().IsNull().Create();
+			newFoo = _testableFoo.When<TestableFoo>().IsNull().Create();
 		}
 
 		[Test]
 		[Observation]
 		public void should_be_be_equal()
 		{
-			Assert.AreEqual(_testableFooToTest, newFoo);
+			Assert.AreEqual(_testableFoo, newFoo);
 		}
 	}
 
 	[TestFixture]
 	[Concern("Fluent Evaluator")]
-	public class when_creating_on_null_with_args : FluentEvalutionSpecs
+	public class when_creating_on_null_with_args : EvaluationActionsSpecs
 	{
 		private int _intArg = 42;
 		private string _stringArg = "asdf";
 
 		protected override void Context()
 		{
-			_testableFooToTest = null;
+			_testableFoo = null;
 
-			_testableFooToTest = _testableFooToTest.When<TestableFoo>().IsNull().Create(_stringArg, _intArg);
+			_testableFoo = _testableFoo.When<TestableFoo>().IsNull().Create(_stringArg, _intArg);
 		}
 
 		[Test]
 		[Observation]
 		public void should_be_a_new_instance()
 		{
-			Assert.IsNotNull(_testableFooToTest);
+			Assert.IsNotNull(_testableFoo);
 		}
 
 		[Test]
 		[Observation]
 		public void args_should_match()
 		{
-			Assert.AreEqual(_stringArg, _testableFooToTest.FooString);
-			Assert.AreEqual(_intArg, _testableFooToTest.FooInt);
+			Assert.AreEqual(_stringArg, _testableFoo.FooString);
+			Assert.AreEqual(_intArg, _testableFoo.FooInt);
 		}
 	}
 
 	[TestFixture]
 	[Concern("Fluent Evaluator")]
-	public class when_creating_on_non_null_with_args : FluentEvalutionSpecs
+	public class when_creating_on_non_null_with_args : EvaluationActionsSpecs
 	{
 		private int _intArg = 42;
 		private string _stringArg = "asdf";
 
 		protected override void Context()
 		{
-			_testableFooToTest = new TestableFoo(_stringArg, _intArg);
+			_testableFoo = new TestableFoo(_stringArg, _intArg);
 
-			_testableFooToTest = _testableFooToTest.When<TestableFoo>().IsNull().Create(_stringArg, _intArg);
+			_testableFoo = _testableFoo.When<TestableFoo>().IsNull().Create(_stringArg, _intArg);
 		}
 
 		[Test]
 		[Observation]
 		public void args_should_match()
 		{
-			Assert.AreEqual(_stringArg, _testableFooToTest.FooString);
-			Assert.AreEqual(_intArg, _testableFooToTest.FooInt);
+			Assert.AreEqual(_stringArg, _testableFoo.FooString);
+			Assert.AreEqual(_intArg, _testableFoo.FooInt);
 		}
 	}
 
 	[TestFixture]
 	[Concern("Fluent Evaluator")]
-	public class when_creating_on_non_class_with_null : FluentEvalutionSpecs
+	public class when_creating_on_non_class_with_null : EvaluationActionsSpecs
 	{
 		protected override void Context()
 		{
@@ -153,7 +155,7 @@ namespace FluentEvaluator.Tests
 
 	[TestFixture]
 	[Concern("Fluent Evaluator")]
-	public class when_creating_on_non_class_with_non_null : FluentEvalutionSpecs
+	public class when_creating_on_non_class_with_non_null : EvaluationActionsSpecs
 	{
 		protected override void Context()
 		{
@@ -174,16 +176,16 @@ namespace FluentEvaluator.Tests
 
 	[TestFixture]
 	[Concern("Fluent Evaluation")]
-	public class when_is_null_and_throws_an_excepiton : FluentEvalutionSpecs
+	public class when_throws_an_excepiton : EvaluationActionsSpecs
 	{
 		[Test]
 		[Observation]
 		[ExpectedException(typeof(TestableException))]
 		public void should_throw_specified_exceptionType()
 		{
-			_testableFooToTest = null;
+			_testableFoo = null;
 
-			_testableFooToTest.When<TestableFoo>().IsNull().ThrowException<TestableException>();
+			_testableFoo.When<TestableFoo>().IsNull().ThrowException<TestableException>();
 		}
 	}
 }
