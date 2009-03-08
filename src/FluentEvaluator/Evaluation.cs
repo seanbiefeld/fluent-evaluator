@@ -31,6 +31,12 @@
 			return new Action<TypeToEvaluate>(ObjectToEvaluate, EvaluationToPerform);
 		}
 
+		public Action<TypeToEvaluate> EqualsThis(object objectToEqual)
+		{
+			EvaluationToPerform = (ObjectToEvaluate.Equals(objectToEqual));
+			return new Action<TypeToEvaluate>(ObjectToEvaluate, EvaluationToPerform);
+		}
+
 		#endregion
 	}
 }
