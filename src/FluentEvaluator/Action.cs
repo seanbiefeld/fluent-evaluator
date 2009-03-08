@@ -63,6 +63,12 @@ namespace FluentEvaluator
 			PerformAction();
 		}
 
+		public void DoThis(Action actionToPerform)
+		{
+			ActionToPerformAfterEvaluation = actionToPerform;
+			PerformAction();
+		}
+
 		#region private members
 
 		private void PerformAction()

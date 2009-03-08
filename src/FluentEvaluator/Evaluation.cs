@@ -1,6 +1,6 @@
 ﻿namespace FluentEvaluator
 {
-	public class Evaluation<TypeToEvaluate> : IFluentEvaluation<TypeToEvaluate>
+	public class Evaluation<TypeToEvaluate>
 	{
 		public Evaluation(object objectToEvaluate)
 		{

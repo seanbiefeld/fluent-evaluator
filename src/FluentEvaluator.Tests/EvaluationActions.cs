@@ -188,4 +188,25 @@ namespace FluentEvaluator.Tests
 			When.This(_testableFoo).IsNull().ThrowAnException<TestableException>();
 		}
 	}
+
+	[TestFixture]
+	[Concern("Do this custom action")]
+	public class when_performing_a_custom_action : EvaluationActionsSpecs
+	{
+		private int _counter = 42;
+
+		protected override void Context()
+		{
+			_testableFoo = null;
+			When.This(_testableFoo).IsNull().DoThis(() => _counter++);
+		}
+
+		[Test]
+		[Observation]
+		public void should_add_one_to_counter()
+		{
+			_counter.ShouldEqual(43);
+		}
+	}
+
 }
