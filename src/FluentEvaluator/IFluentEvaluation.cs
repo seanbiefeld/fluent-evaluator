@@ -1,13 +1,7 @@
-﻿using System;
-
-namespace FluentEvaluator
+﻿namespace FluentEvaluator
 {
 	public interface IFluentEvaluation<TypeToPerformEvaluationOn>
 	{
-		FluentEvaluation<TypeToPerformEvaluationOn> IsNull();
-
-		TypeToPerformEvaluationOn Create(params object[] arguments);
-
-		void ThrowException<ExceptionType>(params object[] exceptionArguments) where ExceptionType : Exception;
+		EvaluationAction<TypeToPerformEvaluationOn> IsNull();
 	}
 }

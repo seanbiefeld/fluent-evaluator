@@ -54,7 +54,7 @@ namespace FluentEvaluator.Tests
 		[Observation]
 		public void should_be_a_new_instance()
 		{
-			Assert.IsNotNull(_testableFooToTest);
+			_testableFooToTest.ShouldNotBeNull();
 		}
 	}
 
