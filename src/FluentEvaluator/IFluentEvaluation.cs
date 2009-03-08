@@ -2,6 +2,6 @@
 {
 	public interface IFluentEvaluation<TypeToPerformEvaluationOn>
 	{
-		EvaluationAction<TypeToPerformEvaluationOn> IsNull();
+		Action<TypeToPerformEvaluationOn> IsNull();
 	}
 }

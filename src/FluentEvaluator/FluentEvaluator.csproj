@@ -45,11 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EvaluationAction.cs" />
-    <Compile Include="FluentEvaluation.cs" />
+    <Compile Include="When.cs" />
+    <Compile Include="Action.cs" />
+    <Compile Include="Evaluation.cs" />
     <Compile Include="IEvaluationAction.cs" />
     <Compile Include="IFluentEvaluation.cs" />
-    <Compile Include="ObjectExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -3,9 +3,9 @@ using System.Reflection;
 
 namespace FluentEvaluator
 {
-	public class EvaluationAction<TypeToPerformEvaluationOn>
+	public class Action<TypeToEvaluate>
 	{
-		public EvaluationAction(object objectToEvaluate, bool evaluationToPerform)
+		public Action(object objectToEvaluate, bool evaluationToPerform)
 		{
 			ObjectToEvaluate = objectToEvaluate;
 			EvaluationToPerform = evaluationToPerform;
@@ -33,14 +33,14 @@ namespace FluentEvaluator
 
 		#endregion
 
-		public TypeToPerformEvaluationOn Create(params object[] arguments)
+		public TypeToEvaluate CreateIt(params object[] arguments)
 		{
 			ActionToPerformAfterEvaluation = () =>
 			{
 				try
 				{
-					ConstructorInfo currentCtorInfo = typeof(TypeToPerformEvaluationOn).GetConstructor(GetConstructorTypes(arguments));
-					ObjectToEvaluate = currentCtorInfo == null ? default(TypeToPerformEvaluationOn) : currentCtorInfo.Invoke(arguments);
+					ConstructorInfo currentCtorInfo = typeof(TypeToEvaluate).GetConstructor(GetConstructorTypes(arguments));
+					ObjectToEvaluate = currentCtorInfo == null ? default(TypeToEvaluate) : currentCtorInfo.Invoke(arguments);
 				}
 				catch (Exception ex)
 				{
@@ -48,10 +48,10 @@ namespace FluentEvaluator
 				}
 			};
 			PerformAction();
-			return (TypeToPerformEvaluationOn)ObjectToEvaluate;
+			return (TypeToEvaluate)ObjectToEvaluate;
 		}
 
-		public void ThrowException<ExceptionType>(params object[] exceptionArguments) where ExceptionType : Exception
+		public void ThrowAnException<ExceptionType>(params object[] exceptionArguments) where ExceptionType : Exception
 		{
 			ActionToPerformAfterEvaluation = () =>
 			{

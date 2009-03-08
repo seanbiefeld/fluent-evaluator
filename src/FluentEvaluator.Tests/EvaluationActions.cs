@@ -49,7 +49,7 @@ namespace FluentEvaluator.Tests
 		{
 			_testableFoo = null;
 
-			_testableFoo = _testableFoo.When<TestableFoo>().IsNull().Create();
+			_testableFoo = When.This(_testableFoo).IsNull().CreateIt();
 		}
 
 		[Test]
@@ -70,7 +70,7 @@ namespace FluentEvaluator.Tests
 		{
 			_testableFoo = new TestableFoo();
 
-			newFoo = _testableFoo.When<TestableFoo>().IsNull().Create();
+			newFoo = When.This(_testableFoo).IsNull().CreateIt();
 		}
 
 		[Test]
@@ -92,7 +92,7 @@ namespace FluentEvaluator.Tests
 		{
 			_testableFoo = null;
 
-			_testableFoo = _testableFoo.When<TestableFoo>().IsNull().Create(_stringArg, _intArg);
+			_testableFoo = When.This(_testableFoo).IsNull().CreateIt(_stringArg, _intArg);
 		}
 
 		[Test]
@@ -122,7 +122,7 @@ namespace FluentEvaluator.Tests
 		{
 			_testableFoo = new TestableFoo(_stringArg, _intArg);
 
-			_testableFoo = _testableFoo.When<TestableFoo>().IsNull().Create(_stringArg, _intArg);
+			_testableFoo = When.This(_testableFoo).IsNull().CreateIt(_stringArg, _intArg);
 		}
 
 		[Test]
@@ -142,7 +142,7 @@ namespace FluentEvaluator.Tests
 		{
 			_testableString = null;
 
-			_testableString = _testableString.When<string>().IsNull().Create();
+			_testableString = When.This(_testableString).IsNull().CreateIt();
 		}
 
 		[Test]
@@ -161,7 +161,7 @@ namespace FluentEvaluator.Tests
 		{
 			_testableString = "asdf";
 
-			_testableString = _testableString.When<string>().IsNull().Create();
+			_testableString = When.This(_testableString).IsNull().CreateIt();
 		}
 
 		[Test]
@@ -185,7 +185,7 @@ namespace FluentEvaluator.Tests
 		{
 			_testableFoo = null;
 
-			_testableFoo.When<TestableFoo>().IsNull().ThrowException<TestableException>();
+			When.This(_testableFoo).IsNull().ThrowAnException<TestableException>();
 		}
 	}
 }

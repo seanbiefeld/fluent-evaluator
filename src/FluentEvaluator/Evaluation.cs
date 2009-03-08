@@ -1,8 +1,8 @@
 ﻿namespace FluentEvaluator
 {
-	public class FluentEvaluation<TypeToPerformEvaluationOn> : IFluentEvaluation<TypeToPerformEvaluationOn>
+	public class Evaluation<TypeToEvaluate> : IFluentEvaluation<TypeToEvaluate>
 	{
-		public FluentEvaluation(object objectToEvaluate)
+		public Evaluation(object objectToEvaluate)
 		{
 			ObjectToEvaluate = objectToEvaluate;
 		}
@@ -25,10 +25,10 @@
 
 		#region public members
 
-		public EvaluationAction<TypeToPerformEvaluationOn> IsNull()
+		public Action<TypeToEvaluate> IsNull()
 		{
 			EvaluationToPerform = (ObjectToEvaluate == null);
-			return new EvaluationAction<TypeToPerformEvaluationOn>(ObjectToEvaluate, EvaluationToPerform);
+			return new Action<TypeToEvaluate>(ObjectToEvaluate, EvaluationToPerform);
 		}
 
 		#endregion
