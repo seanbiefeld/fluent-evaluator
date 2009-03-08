@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentEvaluator", "FluentEvaluator.csproj", "{29402162-E353-4B2C-B074-9547D0BC410A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentEvaluator.Tests", "..\FluentEvaluator.Tests\FluentEvaluator.Tests.csproj", "{0CC67694-D806-43EC-982C-1F6828832E4A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29402162-E353-4B2C-B074-9547D0BC410A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29402162-E353-4B2C-B074-9547D0BC410A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29402162-E353-4B2C-B074-9547D0BC410A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29402162-E353-4B2C-B074-9547D0BC410A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CC67694-D806-43EC-982C-1F6828832E4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CC67694-D806-43EC-982C-1F6828832E4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CC67694-D806-43EC-982C-1F6828832E4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CC67694-D806-43EC-982C-1F6828832E4A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
