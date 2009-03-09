@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="EvaluationActions.cs" />
     <Compile Include="EvaluationSpecs.cs" />
+    <Compile Include="EvaluationUtilitiesSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

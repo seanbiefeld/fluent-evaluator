@@ -1,6 +1,6 @@
 ﻿namespace FluentEvaluator
 {
-	public class AndEvaluation
+	public class AndEvaluation : IEvaluation<ConjunctiveAction>
 	{
 		public AndEvaluation(object objectToEvaluate, bool conjuctiveEvaluation)
 		{
@@ -29,6 +29,13 @@
 		public ConjunctiveAction IsNull()
 		{
 			EvaluationToPerform &= (ObjectToEvaluate == null);
+			return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
+		}
+
+		public ConjunctiveAction IsEmpty()
+		{
+			EvaluationToPerform &= EvaluationUtilities.CheckIfObjectToEvaluateIsEmpty(ObjectToEvaluate);
+
 			return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
 		}
 

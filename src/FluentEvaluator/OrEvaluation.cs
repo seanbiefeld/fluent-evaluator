@@ -1,6 +1,9 @@
-﻿namespace FluentEvaluator
+﻿using System;
+using System.Collections;
+
+namespace FluentEvaluator
 {
-	public class OrEvaluation
+	public class OrEvaluation : IEvaluation<ConjunctiveAction>
 	{
 		public OrEvaluation(object objectToEvaluate, bool conjuctiveEvaluation)
 		{
@@ -29,6 +32,13 @@
 		public ConjunctiveAction IsNull()
 		{
 			EvaluationToPerform |= (ObjectToEvaluate == null);
+			return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
+		}
+
+		public ConjunctiveAction IsEmpty()
+		{
+			EvaluationToPerform |= EvaluationUtilities.CheckIfObjectToEvaluateIsEmpty(ObjectToEvaluate);
+			
 			return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
 		}
 
