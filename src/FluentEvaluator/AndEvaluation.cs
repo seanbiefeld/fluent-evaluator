@@ -45,6 +45,12 @@
 			return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
 		}
 
+		public ConjunctiveAction IsNotNull()
+		{
+			EvaluationToPerform &= (ObjectToEvaluate != null);
+			return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
+		}
+
 		#endregion
 	}
 }

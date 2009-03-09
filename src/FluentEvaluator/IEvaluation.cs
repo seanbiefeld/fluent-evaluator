@@ -7,5 +7,7 @@ namespace FluentEvaluator
 		TypeOfAction IsEmpty();
 
 		TypeOfAction EqualsThis(object objectToEqual);
+
+		TypeOfAction IsNotNull();
 	}
 }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-
-namespace FluentEvaluator
+﻿namespace FluentEvaluator
 {
 	public class OrEvaluation : IEvaluation<ConjunctiveAction>
 	{
@@ -45,6 +42,12 @@ namespace FluentEvaluator
 		public ConjunctiveAction EqualsThis(object objectToEqual)
 		{
 			EvaluationToPerform |= (ObjectToEvaluate.Equals(objectToEqual));
+			return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
+		}
+
+		public ConjunctiveAction IsNotNull()
+		{
+			EvaluationToPerform |= (ObjectToEvaluate != null);
 			return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
 		}
 

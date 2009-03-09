@@ -43,6 +43,12 @@
 			EvaluationToPerform = (ObjectToEvaluate.Equals(objectToEqual));
 			return new SingularAction<TypeToEvaluate>(ObjectToEvaluate, EvaluationToPerform);
 		}
+        
+		public SingularAction<TypeToEvaluate> IsNotNull()
+		{
+			EvaluationToPerform = (ObjectToEvaluate != null);
+			return new SingularAction<TypeToEvaluate>(ObjectToEvaluate, EvaluationToPerform);
+		}
 
 		#endregion
 	}
