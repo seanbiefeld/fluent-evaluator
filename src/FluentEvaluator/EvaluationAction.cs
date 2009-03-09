@@ -3,9 +3,9 @@ using System.Reflection;
 
 namespace FluentEvaluator
 {
-	public class Action<TypeToEvaluate>
+	public class EvaluationAction
 	{
-		public Action(object objectToEvaluate, bool evaluationToPerform)
+		public EvaluationAction(object objectToEvaluate, bool evaluationToPerform)
 		{
 			ObjectToEvaluate = objectToEvaluate;
 			EvaluationToPerform = evaluationToPerform;
@@ -13,43 +13,25 @@ namespace FluentEvaluator
 
         #region properties
 
-		private object ObjectToEvaluate
+		protected object ObjectToEvaluate
 		{
 			get;
 			set;
 		}
 
-		private Action ActionToPerformAfterEvaluation
+		protected Action ActionToPerformAfterEvaluation
 		{
 			get;
 			set;
 		}
 
-		private bool EvaluationToPerform
+		protected bool EvaluationToPerform
 		{
 			get;
 			set;
 		}
 
 		#endregion
-
-		public TypeToEvaluate CreateIt(params object[] arguments)
-		{
-			ActionToPerformAfterEvaluation = () =>
-			{
-				try
-				{
-					ConstructorInfo currentCtorInfo = typeof(TypeToEvaluate).GetConstructor(GetConstructorTypes(arguments));
-					ObjectToEvaluate = currentCtorInfo == null ? default(TypeToEvaluate) : currentCtorInfo.Invoke(arguments);
-				}
-				catch (Exception ex)
-				{
-					throw new ApplicationException("could not invoke costructor", ex);
-				}
-			};
-			PerformAction();
-			return (TypeToEvaluate)ObjectToEvaluate;
-		}
 
 		public void ThrowAnException<ExceptionType>(params object[] exceptionArguments) where ExceptionType : Exception
 		{
@@ -69,15 +51,25 @@ namespace FluentEvaluator
 			PerformAction();
 		}
 
+		public AndEvaluation AndWhenThis(object objectToEvaluate)
+		{
+			return new AndEvaluation(objectToEvaluate, EvaluationToPerform);
+		}
+		
+		public OrEvaluation OrWhenThis(object objectToEvaluate)
+		{
+			return new OrEvaluation(objectToEvaluate, EvaluationToPerform);
+		}
+
 		#region private members
 
-		private void PerformAction()
+		protected void PerformAction()
 		{
 			if (EvaluationToPerform)
 				ActionToPerformAfterEvaluation();
 		}
 
-		private static Type[] GetConstructorTypes(object[] arguments)
+		protected static Type[] GetConstructorTypes(object[] arguments)
 		{
 			Type[] constructorTypes = new Type[arguments.Length];
 

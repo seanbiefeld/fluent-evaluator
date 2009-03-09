@@ -209,4 +209,115 @@ namespace FluentEvaluator.Tests
 		}
 	}
 
+	#region conjunction tests
+
+	[TestFixture]
+	[Concern("and when action")]
+	public class when_using_an_and_expression_and_it_is_true : EvaluationActionsSpecs
+	{
+		private int _count = 1;
+		protected override void Context()
+		{
+			_testableString = null;
+			_testableFoo = null;
+
+			When.This(_testableFoo).IsNull().AndWhenThis(_testableString).IsNull().DoThis(() => _count++);
+		}
+
+		[Test]
+		[Observation]
+		public void should_make_count_equal_two()
+		{
+			_count.ShouldEqual(2);
+		}
+	}
+
+	[TestFixture]
+	[Concern("and when action")]
+	public class when_using_an_and_expression_and_it_is_false : EvaluationActionsSpecs
+	{
+		private int _count = 1;
+		protected override void Context()
+		{
+			_testableString = null;
+			_testableFoo = new TestableFoo();
+
+			When.This(_testableFoo).IsNull()
+				.AndWhenThis(_testableString).IsNull()
+				.DoThis(() => _count++);
+		}
+
+		[Test]
+		[Observation]
+		public void should_leave_count_as_one()
+		{
+			_count.ShouldEqual(1);
+		}
+	}
+
+	[TestFixture]
+	[Concern("and when action")]
+	public class when_using_an_or_expression_and_both_are_true : EvaluationActionsSpecs
+	{
+		private int _count = 1;
+		protected override void Context()
+		{
+			_testableString = null;
+			_testableFoo = null;
+
+			When.This(_testableFoo).IsNull().OrWhenThis(_testableString).IsNull().DoThis(() => _count++);
+		}
+
+		[Test]
+		[Observation]
+		public void should_make_count_equal_two()
+		{
+			_count.ShouldEqual(2);
+		}
+	}
+
+	[TestFixture]
+	[Concern("and when action")]
+	public class when_using_an_or_expression_and_one_is_true : EvaluationActionsSpecs
+	{
+		private int _count = 1;
+		protected override void Context()
+		{
+			_testableString = null;
+			_testableFoo = new TestableFoo();
+
+			When.This(_testableFoo).IsNull().OrWhenThis(_testableString).IsNull().DoThis(() => _count++);
+		}
+
+		[Test]
+		[Observation]
+		public void should_make_count_equal_two()
+		{
+			_count.ShouldEqual(2);
+		}
+	}
+	
+	[TestFixture]
+	[Concern("and when action")]
+	public class when_using_an_or_expression_and_both_are_false : EvaluationActionsSpecs
+	{
+		private int _count = 1;
+		protected override void Context()
+		{
+			_testableString = "asdf";
+			_testableFoo = new TestableFoo();
+
+			When.This(_testableFoo).IsNull().OrWhenThis(_testableString).IsNull().DoThis(() => _count++);
+		}
+
+		[Test]
+		[Observation]
+		public void should_leave_count_as_one()
+		{
+			_count.ShouldEqual(1);
+		}
+	}
+
+	#endregion
+
 }

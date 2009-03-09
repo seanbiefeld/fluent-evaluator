@@ -45,8 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConjunctiveAction.cs" />
+    <Compile Include="AndEvaluation.cs" />
+    <Compile Include="OrEvaluation.cs" />
+    <Compile Include="SingularAction.cs" />
     <Compile Include="When.cs" />
-    <Compile Include="Action.cs" />
+    <Compile Include="EvaluationAction.cs" />
     <Compile Include="Evaluation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

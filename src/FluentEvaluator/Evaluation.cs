@@ -25,16 +25,16 @@
 
 		#region public members
 
-		public Action<TypeToEvaluate> IsNull()
+		public SingularAction<TypeToEvaluate> IsNull()
 		{
 			EvaluationToPerform = (ObjectToEvaluate == null);
-			return new Action<TypeToEvaluate>(ObjectToEvaluate, EvaluationToPerform);
+			return new SingularAction<TypeToEvaluate>(ObjectToEvaluate, EvaluationToPerform);
 		}
 
-		public Action<TypeToEvaluate> EqualsThis(object objectToEqual)
+		public SingularAction<TypeToEvaluate> EqualsThis(object objectToEqual)
 		{
 			EvaluationToPerform = (ObjectToEvaluate.Equals(objectToEqual));
-			return new Action<TypeToEvaluate>(ObjectToEvaluate, EvaluationToPerform);
+			return new SingularAction<TypeToEvaluate>(ObjectToEvaluate, EvaluationToPerform);
 		}
 
 		#endregion
