@@ -1,8 +1,10 @@
-﻿namespace FluentEvaluator
+﻿using System;
+
+namespace FluentEvaluator
 {
-	public class AndEvaluation : IEvaluation<ConjunctiveAction>
+	public class AndEvaluation<TypeToEvaluate> : IEvaluation<ConjunctiveAction, TypeToEvaluate>
 	{
-		public AndEvaluation(object objectToEvaluate, bool conjuctiveEvaluation)
+		public AndEvaluation(TypeToEvaluate objectToEvaluate, bool conjuctiveEvaluation)
 		{
 			ObjectToEvaluate = objectToEvaluate;
 			EvaluationToPerform = conjuctiveEvaluation;
@@ -10,7 +12,7 @@
 
 		#region properties
 
-		protected virtual object ObjectToEvaluate
+		protected virtual TypeToEvaluate ObjectToEvaluate
 		{
 			get;
 			set;
@@ -28,7 +30,7 @@
 
 		public ConjunctiveAction IsNull()
 		{
-			EvaluationToPerform &= (ObjectToEvaluate == null);
+			EvaluationToPerform &= (Equals(ObjectToEvaluate, default(TypeToEvaluate)));
 			return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
 		}
 
@@ -47,7 +49,16 @@
 
 		public ConjunctiveAction IsNotNull()
 		{
-			EvaluationToPerform &= (ObjectToEvaluate != null);
+			EvaluationToPerform &= (!Equals(ObjectToEvaluate, default(TypeToEvaluate)));
+			return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
+		}
+
+		public ConjunctiveAction Satisfies(Predicate<TypeToEvaluate> match)
+		{
+			When.This(match).IsNull().ThrowAnException<ArgumentNullException>(string.Format("match was null"));
+
+			EvaluationToPerform &= (match(ObjectToEvaluate));
+
 			return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
 		}
 

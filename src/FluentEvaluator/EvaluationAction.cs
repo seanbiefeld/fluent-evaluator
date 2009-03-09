@@ -51,14 +51,14 @@ namespace FluentEvaluator
 			PerformAction();
 		}
 
-		public AndEvaluation AndWhenThis(object objectToEvaluate)
+		public AndEvaluation<TypeToEvaluate> AndWhenThis<TypeToEvaluate>(TypeToEvaluate objectToEvaluate)
 		{
-			return new AndEvaluation(objectToEvaluate, EvaluationToPerform);
+			return new AndEvaluation<TypeToEvaluate>(objectToEvaluate, EvaluationToPerform);
 		}
-		
-		public OrEvaluation OrWhenThis(object objectToEvaluate)
+
+		public OrEvaluation<TypeToEvaluate> OrWhenThis<TypeToEvaluate>(TypeToEvaluate objectToEvaluate)
 		{
-			return new OrEvaluation(objectToEvaluate, EvaluationToPerform);
+			return new OrEvaluation<TypeToEvaluate>(objectToEvaluate, EvaluationToPerform);
 		}
 
 		#region private members

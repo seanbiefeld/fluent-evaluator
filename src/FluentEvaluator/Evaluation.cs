@@ -1,15 +1,17 @@
-﻿namespace FluentEvaluator
+﻿using System;
+
+namespace FluentEvaluator
 {
-	public class Evaluation<TypeToEvaluate> : IEvaluation<SingularAction<TypeToEvaluate>>
+	public class Evaluation<TypeToEvaluate> : IEvaluation<SingularAction<TypeToEvaluate>, TypeToEvaluate>
 	{
-		public Evaluation(object objectToEvaluate)
+		public Evaluation(TypeToEvaluate objectToEvaluate)
 		{
 			ObjectToEvaluate = objectToEvaluate;
 		}
 
 		#region properties
 
-		protected virtual object ObjectToEvaluate
+		protected virtual TypeToEvaluate ObjectToEvaluate
 		{
 			get;
 			set;
@@ -27,7 +29,7 @@
 
 		public SingularAction<TypeToEvaluate> IsNull()
 		{
-			EvaluationToPerform = (ObjectToEvaluate == null);
+			EvaluationToPerform = (Equals(ObjectToEvaluate, default(TypeToEvaluate)));
 			return new SingularAction<TypeToEvaluate>(ObjectToEvaluate, EvaluationToPerform);
 		}
 
@@ -46,7 +48,16 @@
         
 		public SingularAction<TypeToEvaluate> IsNotNull()
 		{
-			EvaluationToPerform = (ObjectToEvaluate != null);
+			EvaluationToPerform = (!Equals(ObjectToEvaluate, default(TypeToEvaluate)));
+			return new SingularAction<TypeToEvaluate>(ObjectToEvaluate, EvaluationToPerform);
+		}
+
+		public SingularAction<TypeToEvaluate> Satisfies(Predicate<TypeToEvaluate> match)
+		{
+			When.This(match).IsNull().ThrowAnException<ArgumentNullException>(string.Format("match was null"));
+
+			EvaluationToPerform = (match(ObjectToEvaluate));
+
 			return new SingularAction<TypeToEvaluate>(ObjectToEvaluate, EvaluationToPerform);
 		}
 

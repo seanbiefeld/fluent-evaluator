@@ -1,6 +1,8 @@
+using System;
+
 namespace FluentEvaluator
 {
-	public interface IEvaluation<TypeOfAction> where TypeOfAction : EvaluationAction
+	public interface IEvaluation<TypeOfAction, TypeToEvaluate> where TypeOfAction : EvaluationAction
 	{
 		TypeOfAction IsNull();
 
@@ -9,5 +11,7 @@ namespace FluentEvaluator
 		TypeOfAction EqualsThis(object objectToEqual);
 
 		TypeOfAction IsNotNull();
+
+		TypeOfAction Satisfies(Predicate<TypeToEvaluate> match);
 	}
 }
