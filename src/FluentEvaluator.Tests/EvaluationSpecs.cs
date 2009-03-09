@@ -87,4 +87,48 @@ namespace FluentEvaluator.Tests
 			_count.ShouldEqual(1);
 		}
 	}
+
+	[TestFixture]
+	[Concern("satisfies")]
+	public class when_it_does_satisfy : EvaluationSpecs
+	{
+		protected int _fooInt = 42;
+		protected bool _actionWasPerformed;
+
+		protected override void Context()
+		{
+			_testableFooOne = new TestableFoo("asdf", _fooInt);
+			When.This(_testableFooOne).Satisfies(fooOne => fooOne.FooInt == _fooInt)
+				.DoThis(() => _actionWasPerformed = true);
+		}
+
+		[Test]
+		[Observation]
+		public void should_perform_action()
+		{
+			_actionWasPerformed.ShouldBeTrue();
+		}
+	}
+
+	[TestFixture]
+	[Concern("satisfies")]
+	public class when_it_doesnt_satisfy : EvaluationSpecs
+	{
+		protected int _fooInt = 42;
+		protected bool _actionWasPerformed;
+
+		protected override void Context()
+		{
+			_testableFooOne = new TestableFoo("asdf", 43);
+			When.This(_testableFooOne).Satisfies(fooOne => fooOne.FooInt == _fooInt)
+				.DoThis(() => _actionWasPerformed = true);
+		}
+
+		[Test]
+		[Observation]
+		public void should_not_perform_action()
+		{
+			_actionWasPerformed.ShouldBeFalse();
+		}
+	}
 }
