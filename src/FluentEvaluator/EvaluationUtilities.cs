@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 
 namespace FluentEvaluator
 {
@@ -18,6 +19,17 @@ namespace FluentEvaluator
 
 			}
 			return false;
+		}
+
+		public static Type[] GetConstructorTypes(object[] arguments)
+		{
+			Type[] constructorTypes = new Type[arguments.Length];
+
+			for (int i = 0; i < arguments.Length; i++)
+			{
+				constructorTypes[i] = arguments[i].GetType();
+			}
+			return constructorTypes;
 		}
 	}
 }

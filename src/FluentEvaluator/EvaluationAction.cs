@@ -33,22 +33,22 @@ namespace FluentEvaluator
 
 		#endregion
 
-		public void ThrowAnException<ExceptionType>(params object[] exceptionArguments) where ExceptionType : Exception
+		public EvaluationConclusion ThrowAnException<ExceptionType>(params object[] exceptionArguments) where ExceptionType : Exception
 		{
 			ActionToPerformAfterEvaluation = () =>
 			{
-				ConstructorInfo currentCtorInfo = typeof(ExceptionType).GetConstructor(GetConstructorTypes(exceptionArguments));
+				ConstructorInfo currentCtorInfo = typeof(ExceptionType).GetConstructor(EvaluationUtilities.GetConstructorTypes(exceptionArguments));
 
 				if (currentCtorInfo != null)
 					throw (ExceptionType)currentCtorInfo.Invoke(exceptionArguments);
 			};
-			PerformAction();
+			return new EvaluationConclusion(EvaluationToPerform, ActionToPerformAfterEvaluation);
 		}
 
-		public void DoThis(Action actionToPerform)
+		public EvaluationConclusion DoThis(Action actionToPerform)
 		{
 			ActionToPerformAfterEvaluation = actionToPerform;
-			PerformAction();
+			return new EvaluationConclusion(EvaluationToPerform, ActionToPerformAfterEvaluation);
 		}
 
 		public AndEvaluation<TypeToEvaluate> AndWhenThis<TypeToEvaluate>(TypeToEvaluate objectToEvaluate)
@@ -60,26 +60,104 @@ namespace FluentEvaluator
 		{
 			return new OrEvaluation<TypeToEvaluate>(objectToEvaluate, EvaluationToPerform);
 		}
+	}
 
-		#region private members
+	public class EvaluationConclusion
+	{
+		protected Action ActionToPerformAfterEvaluation
+		{
+			get;
+			set;
+		}
+
+		protected Action OtherwiseActionToPerformAfterEvaluation
+		{
+			get;
+			set;
+		}
+
+
+		protected bool EvaluationToPerform
+		{
+			get;
+			set;
+		}
+
+		public OtherwiseAction Otherwise
+		{ 
+			get
+			{
+				return new OtherwiseAction(EvaluationToPerform, ActionToPerformAfterEvaluation);
+			}
+		}
+
+		public EvaluationConclusion(bool evaluationToPerform, Action actionToPerformAfterEvaluation)
+		{
+			EvaluationToPerform = evaluationToPerform;
+			ActionToPerformAfterEvaluation = actionToPerformAfterEvaluation;
+		}
+
+		public EvaluationConclusion(bool evaluationToPerform, Action actionToPerformAfterEvaluation, Action otherwiseActionToPerformAfterEvaluation)
+		{
+			EvaluationToPerform = evaluationToPerform;
+			ActionToPerformAfterEvaluation = actionToPerformAfterEvaluation;
+			OtherwiseActionToPerformAfterEvaluation = otherwiseActionToPerformAfterEvaluation;
+		}
+
+		public virtual void Engage()
+		{
+			PerformAction();
+		}
 
 		protected void PerformAction()
 		{
 			if (EvaluationToPerform)
 				ActionToPerformAfterEvaluation();
-		}
-
-		protected static Type[] GetConstructorTypes(object[] arguments)
-		{
-			Type[] constructorTypes = new Type[arguments.Length];
-
-			for (int i = 0; i < arguments.Length; i++)
+			else
 			{
-				constructorTypes[i] = arguments[i].GetType();
+				if(OtherwiseActionToPerformAfterEvaluation != null)
+					OtherwiseActionToPerformAfterEvaluation();
 			}
-			return constructorTypes;
 		}
 
-		#endregion
+	}
+
+	public class OtherwiseAction
+	{
+		public OtherwiseAction(bool evaluationToPerform, Action actionToPerformAfterEvaluation)
+		{
+			EvaluationToPerform = evaluationToPerform;
+			ActionToPerformAfterEvaluation = actionToPerformAfterEvaluation;
+		}
+
+		protected Action ActionToPerformAfterEvaluation
+		{
+			get;
+			set;
+		}
+
+		protected bool EvaluationToPerform
+		{
+			get;
+			set;
+		}
+		
+		public EvaluationConclusion ThrowAnException<ExceptionType>(params object[] exceptionArguments) where ExceptionType : Exception
+		{
+			Action otherwiseActionToPerform = () =>
+			{
+				ConstructorInfo currentCtorInfo = typeof(ExceptionType).GetConstructor(EvaluationUtilities.GetConstructorTypes(exceptionArguments));
+
+				if (currentCtorInfo != null)
+					throw (ExceptionType)currentCtorInfo.Invoke(exceptionArguments);
+			};
+			return new EvaluationConclusion(true, ActionToPerformAfterEvaluation, otherwiseActionToPerform);
+		}
+
+		public EvaluationConclusion DoThis(Action actionToPerform)
+		{
+			Action otherwiseActionToPerform = actionToPerform;
+			return new EvaluationConclusion(true, ActionToPerformAfterEvaluation, otherwiseActionToPerform);
+		}
 	}
 }

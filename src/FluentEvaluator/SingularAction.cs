@@ -15,7 +15,7 @@ namespace FluentEvaluator
 			{
 				try
 				{
-					ConstructorInfo currentCtorInfo = typeof(TypeToEvaluate).GetConstructor(GetConstructorTypes(arguments));
+					ConstructorInfo currentCtorInfo = typeof(TypeToEvaluate).GetConstructor(EvaluationUtilities.GetConstructorTypes(arguments));
 					ObjectToEvaluate = currentCtorInfo == null ? default(TypeToEvaluate) : currentCtorInfo.Invoke(arguments);
 				}
 				catch (Exception ex)
@@ -26,5 +26,15 @@ namespace FluentEvaluator
 			PerformAction();
 			return (TypeToEvaluate)ObjectToEvaluate;
 		}
+
+		#region private members
+
+		private void PerformAction()
+		{
+			if (EvaluationToPerform)
+				ActionToPerformAfterEvaluation();
+		}
+
+		#endregion
 	}
 }

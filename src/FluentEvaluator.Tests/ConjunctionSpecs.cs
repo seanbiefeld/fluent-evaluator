@@ -21,7 +21,7 @@ namespace FluentEvaluator.Tests
 			_testableString = null;
 			_testableFoo = null;
 
-			When.This(_testableFoo).IsNull().AndWhenThis(_testableString).IsNull().DoThis(() => _count++);
+			When.This(_testableFoo).IsNull().AndWhenThis(_testableString).IsNull().DoThis(() => _count++).Engage();
 		}
 
 		[Test]
@@ -44,7 +44,7 @@ namespace FluentEvaluator.Tests
 
 			When.This(_testableFoo).IsNull()
 				.AndWhenThis(_testableString).IsNull()
-				.DoThis(() => _count++);
+				.DoThis(() => _count++).Engage();
 		}
 
 		[Test]
@@ -65,7 +65,7 @@ namespace FluentEvaluator.Tests
 			_testableString = null;
 			_testableFoo = null;
 
-			When.This(_testableFoo).IsNull().OrWhenThis(_testableString).IsNull().DoThis(() => _count++);
+			When.This(_testableFoo).IsNull().OrWhenThis(_testableString).IsNull().DoThis(() => _count++).Engage();
 		}
 
 		[Test]
@@ -86,7 +86,7 @@ namespace FluentEvaluator.Tests
 			_testableString = null;
 			_testableFoo = new TestableFoo();
 
-			When.This(_testableFoo).IsNull().OrWhenThis(_testableString).IsNull().DoThis(() => _count++);
+			When.This(_testableFoo).IsNull().OrWhenThis(_testableString).IsNull().DoThis(() => _count++).Engage();
 		}
 
 		[Test]
@@ -107,7 +107,7 @@ namespace FluentEvaluator.Tests
 			_testableString = "asdf";
 			_testableFoo = new TestableFoo();
 
-			When.This(_testableFoo).IsNull().OrWhenThis(_testableString).IsNull().DoThis(() => _count++);
+			When.This(_testableFoo).IsNull().OrWhenThis(_testableString).IsNull().DoThis(() => _count++).Engage();
 		}
 
 		[Test]
@@ -130,7 +130,7 @@ namespace FluentEvaluator.Tests
 			_testableString = "asdf";
 			_testableList = new List<object>{new object()};
 
-			When.This(_testableString).IsEmpty().AndWhenThis(_testableList).IsEmpty().DoThis(() => _count++);
+			When.This(_testableString).IsEmpty().AndWhenThis(_testableList).IsEmpty().DoThis(() => _count++).Engage();
 		}
 
 		[Test]
@@ -151,7 +151,7 @@ namespace FluentEvaluator.Tests
 			_testableString = string.Empty;
 			_testableList = new List<object>();
 
-			When.This(_testableString).IsEmpty().AndWhenThis(_testableList).IsEmpty().DoThis(() => _count++);
+			When.This(_testableString).IsEmpty().AndWhenThis(_testableList).IsEmpty().DoThis(() => _count++).Engage();
 		}
 
 		[Test]
@@ -171,7 +171,7 @@ namespace FluentEvaluator.Tests
 			_testableString = "asdf";
 			_testableList = new List<object> { new object() };
 
-			When.This(_testableString).IsEmpty().OrWhenThis(_testableList).IsEmpty().DoThis(() => _count++);
+			When.This(_testableString).IsEmpty().OrWhenThis(_testableList).IsEmpty().DoThis(() => _count++).Engage();
 		}
 	}
 
@@ -184,7 +184,7 @@ namespace FluentEvaluator.Tests
 			_testableString = string.Empty;
 			_testableList = new List<object>();
 
-			When.This(_testableString).IsEmpty().OrWhenThis(_testableList).IsEmpty().DoThis(() => _count++);
+			When.This(_testableString).IsEmpty().OrWhenThis(_testableList).IsEmpty().DoThis(() => _count++).Engage();
 		}
 	}
 
@@ -200,7 +200,7 @@ namespace FluentEvaluator.Tests
 		protected int _count = 1;
 		protected override void Context()
 		{
-			When.This(1).EqualsThis(1).AndWhenThis(2).EqualsThis(2).DoThis(() => _count++);
+			When.This(1).EqualsThis(1).AndWhenThis(2).EqualsThis(2).DoThis(() => _count++).Engage();
 		}
 
 		[Test]
@@ -218,7 +218,7 @@ namespace FluentEvaluator.Tests
 		protected int _count = 1;
 		protected override void Context()
 		{
-			When.This(1).EqualsThis(3).AndWhenThis(2).EqualsThis(5).DoThis(() => _count++);
+			When.This(1).EqualsThis(3).AndWhenThis(2).EqualsThis(5).DoThis(() => _count++).Engage();
 		}
 
 		[Test]
@@ -236,7 +236,7 @@ namespace FluentEvaluator.Tests
 		protected int _count = 1;
 		protected override void Context()
 		{
-			When.This(1).EqualsThis(1).OrWhenThis(3).EqualsThis(2).DoThis(() => _count++);
+			When.This(1).EqualsThis(1).OrWhenThis(3).EqualsThis(2).DoThis(() => _count++).Engage();
 		}
 
 		[Test]
@@ -254,7 +254,7 @@ namespace FluentEvaluator.Tests
 		protected int _count = 1;
 		protected override void Context()
 		{
-			When.This(1).EqualsThis(3).OrWhenThis(2).EqualsThis(5).DoThis(() => _count++);
+			When.This(1).EqualsThis(3).OrWhenThis(2).EqualsThis(5).DoThis(() => _count++).Engage();
 		}
 
 		[Test]
