@@ -4,13 +4,13 @@ namespace FluentEvaluator
 {
 	public interface IEvaluation<TypeOfAction, TypeToEvaluate> where TypeOfAction : EvaluationAction
 	{
-		TypeOfAction IsNull();
+		TypeOfAction IsNull{ get; }
 
-		TypeOfAction IsEmpty();
+		TypeOfAction IsEmpty{ get; }
 
 		TypeOfAction EqualsThis(object objectToEqual);
 
-		TypeOfAction IsNotNull();
+		TypeOfAction IsNotNull{ get; }
 
 		TypeOfAction Satisfies(Predicate<TypeToEvaluate> match);
 	}

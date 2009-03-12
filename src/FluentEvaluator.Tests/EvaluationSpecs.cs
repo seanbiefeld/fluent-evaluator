@@ -58,7 +58,7 @@ namespace FluentEvaluator.Tests
 		{
 			_testableFooOne = new TestableFoo();
 
-			When.This(_testableFooOne).IsNotNull().DoThis(() => _count++).Engage();
+			When.This(_testableFooOne).IsNotNull.DoThis(() => _count++).Engage();
 		}
 
 		[Test]
@@ -77,7 +77,7 @@ namespace FluentEvaluator.Tests
 		{
 			_testableFooOne = null;
 
-			When.This(_testableFooOne).IsNotNull().DoThis(() => _count++);
+			When.This(_testableFooOne).IsNotNull.DoThis(() => _count++);
 		}
 
 		[Test]

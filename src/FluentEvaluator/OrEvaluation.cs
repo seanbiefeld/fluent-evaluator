@@ -28,17 +28,22 @@ namespace FluentEvaluator
 
 		#region public members
 
-		public ConjunctiveAction IsNull()
+		public ConjunctiveAction IsNull
 		{
-			EvaluationToPerform |= (Equals(ObjectToEvaluate, default(TypeToEvaluate)));
-			return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
+			get
+			{
+				EvaluationToPerform |= (Equals(ObjectToEvaluate, default(TypeToEvaluate)));
+				return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
+			}
 		}
 
-		public ConjunctiveAction IsEmpty()
+		public ConjunctiveAction IsEmpty
 		{
-			EvaluationToPerform |= EvaluationUtilities.CheckIfObjectToEvaluateIsEmpty(ObjectToEvaluate);
-			
-			return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
+			get
+			{
+				EvaluationToPerform |= EvaluationUtilities.CheckIfObjectToEvaluateIsEmpty(ObjectToEvaluate);
+				return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
+			}
 		}
 
 		public ConjunctiveAction EqualsThis(object objectToEqual)
@@ -47,15 +52,18 @@ namespace FluentEvaluator
 			return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
 		}
 
-		public ConjunctiveAction IsNotNull()
+		public ConjunctiveAction IsNotNull
 		{
-			EvaluationToPerform |= (!Equals(ObjectToEvaluate, default(TypeToEvaluate)));
-			return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
+			get
+			{
+				EvaluationToPerform |= (!Equals(ObjectToEvaluate, default(TypeToEvaluate)));
+				return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
+			}
 		}
 
 		public ConjunctiveAction Satisfies(Predicate<TypeToEvaluate> match)
 		{
-			When.This(match).IsNull().ThrowAnException<ArgumentNullException>(string.Format("match was null"));
+			EvaluationUtilities.EnsurePredicateIsValid(match);
 
 			EvaluationToPerform |= (match(ObjectToEvaluate));
 

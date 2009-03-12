@@ -27,17 +27,22 @@ namespace FluentEvaluator
 
 		#region public members
 
-		public SingularAction<TypeToEvaluate> IsNull()
+		public SingularAction<TypeToEvaluate> IsNull
 		{
-			EvaluationToPerform = (Equals(ObjectToEvaluate, default(TypeToEvaluate)));
-			return new SingularAction<TypeToEvaluate>(ObjectToEvaluate, EvaluationToPerform);
+			get
+			{
+				EvaluationToPerform = (Equals(ObjectToEvaluate, default(TypeToEvaluate)));
+				return new SingularAction<TypeToEvaluate>(ObjectToEvaluate, EvaluationToPerform);
+			}
 		}
 
-		public SingularAction<TypeToEvaluate> IsEmpty()
+		public SingularAction<TypeToEvaluate> IsEmpty
 		{
-			EvaluationToPerform = EvaluationUtilities.CheckIfObjectToEvaluateIsEmpty(ObjectToEvaluate);
-
-			return new SingularAction<TypeToEvaluate>(ObjectToEvaluate, EvaluationToPerform);
+			get
+			{
+				EvaluationToPerform = EvaluationUtilities.CheckIfObjectToEvaluateIsEmpty(ObjectToEvaluate);
+				return new SingularAction<TypeToEvaluate>(ObjectToEvaluate, EvaluationToPerform);
+			}
 		}
 
 		public SingularAction<TypeToEvaluate> EqualsThis(object objectToEqual)
@@ -46,15 +51,18 @@ namespace FluentEvaluator
 			return new SingularAction<TypeToEvaluate>(ObjectToEvaluate, EvaluationToPerform);
 		}
         
-		public SingularAction<TypeToEvaluate> IsNotNull()
+		public SingularAction<TypeToEvaluate> IsNotNull
 		{
-			EvaluationToPerform = (!Equals(ObjectToEvaluate, default(TypeToEvaluate)));
-			return new SingularAction<TypeToEvaluate>(ObjectToEvaluate, EvaluationToPerform);
+			get
+			{
+				EvaluationToPerform = (!Equals(ObjectToEvaluate, default(TypeToEvaluate)));
+				return new SingularAction<TypeToEvaluate>(ObjectToEvaluate, EvaluationToPerform);
+			}
 		}
 
 		public SingularAction<TypeToEvaluate> Satisfies(Predicate<TypeToEvaluate> match)
 		{
-			When.This(match).IsNull().ThrowAnException<ArgumentNullException>(string.Format("match was null"));
+			EvaluationUtilities.EnsurePredicateIsValid(match);
 
 			EvaluationToPerform = (match(ObjectToEvaluate));
 

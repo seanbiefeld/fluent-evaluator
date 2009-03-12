@@ -21,7 +21,7 @@ namespace FluentEvaluator.Tests
 			_testableString = null;
 			_testableFoo = null;
 
-			When.This(_testableFoo).IsNull().AndWhenThis(_testableString).IsNull().DoThis(() => _count++).Engage();
+			When.This(_testableFoo).IsNull.AndWhenThis(_testableString).IsNull.DoThis(() => _count++).Engage();
 		}
 
 		[Test]
@@ -42,8 +42,8 @@ namespace FluentEvaluator.Tests
 			_testableString = null;
 			_testableFoo = new TestableFoo();
 
-			When.This(_testableFoo).IsNull()
-				.AndWhenThis(_testableString).IsNull()
+			When.This(_testableFoo).IsNull
+				.AndWhenThis(_testableString).IsNull
 				.DoThis(() => _count++).Engage();
 		}
 
@@ -65,7 +65,7 @@ namespace FluentEvaluator.Tests
 			_testableString = null;
 			_testableFoo = null;
 
-			When.This(_testableFoo).IsNull().OrWhenThis(_testableString).IsNull().DoThis(() => _count++).Engage();
+			When.This(_testableFoo).IsNull.OrWhenThis(_testableString).IsNull.DoThis(() => _count++).Engage();
 		}
 
 		[Test]
@@ -86,7 +86,7 @@ namespace FluentEvaluator.Tests
 			_testableString = null;
 			_testableFoo = new TestableFoo();
 
-			When.This(_testableFoo).IsNull().OrWhenThis(_testableString).IsNull().DoThis(() => _count++).Engage();
+			When.This(_testableFoo).IsNull.OrWhenThis(_testableString).IsNull.DoThis(() => _count++).Engage();
 		}
 
 		[Test]
@@ -107,7 +107,7 @@ namespace FluentEvaluator.Tests
 			_testableString = "asdf";
 			_testableFoo = new TestableFoo();
 
-			When.This(_testableFoo).IsNull().OrWhenThis(_testableString).IsNull().DoThis(() => _count++).Engage();
+			When.This(_testableFoo).IsNull.OrWhenThis(_testableString).IsNull.DoThis(() => _count++).Engage();
 		}
 
 		[Test]
@@ -130,7 +130,7 @@ namespace FluentEvaluator.Tests
 			_testableString = "asdf";
 			_testableList = new List<object>{new object()};
 
-			When.This(_testableString).IsEmpty().AndWhenThis(_testableList).IsEmpty().DoThis(() => _count++).Engage();
+			When.This(_testableString).IsEmpty.AndWhenThis(_testableList).IsEmpty.DoThis(() => _count++).Engage();
 		}
 
 		[Test]
@@ -151,7 +151,7 @@ namespace FluentEvaluator.Tests
 			_testableString = string.Empty;
 			_testableList = new List<object>();
 
-			When.This(_testableString).IsEmpty().AndWhenThis(_testableList).IsEmpty().DoThis(() => _count++).Engage();
+			When.This(_testableString).IsEmpty.AndWhenThis(_testableList).IsEmpty.DoThis(() => _count++).Engage();
 		}
 
 		[Test]
@@ -171,7 +171,7 @@ namespace FluentEvaluator.Tests
 			_testableString = "asdf";
 			_testableList = new List<object> { new object() };
 
-			When.This(_testableString).IsEmpty().OrWhenThis(_testableList).IsEmpty().DoThis(() => _count++).Engage();
+			When.This(_testableString).IsEmpty.OrWhenThis(_testableList).IsEmpty.DoThis(() => _count++).Engage();
 		}
 	}
 
@@ -184,7 +184,7 @@ namespace FluentEvaluator.Tests
 			_testableString = string.Empty;
 			_testableList = new List<object>();
 
-			When.This(_testableString).IsEmpty().OrWhenThis(_testableList).IsEmpty().DoThis(() => _count++).Engage();
+			When.This(_testableString).IsEmpty.OrWhenThis(_testableList).IsEmpty.DoThis(() => _count++).Engage();
 		}
 	}
 

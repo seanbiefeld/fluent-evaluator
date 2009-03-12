@@ -15,7 +15,7 @@ namespace FluentEvaluator.Tests
 	{
 		protected override void Context()
 		{
-			When.This(_foo).IsNotNull().DoThis(() => _myNumber++)
+			When.This(_foo).IsNotNull.DoThis(() => _myNumber++)
 				.Otherwise.DoThis(() => _myNumber--).Engage();
 		}
 
