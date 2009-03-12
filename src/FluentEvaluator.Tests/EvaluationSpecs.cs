@@ -19,7 +19,7 @@ namespace FluentEvaluator.Tests
 			_testableFooOne = new TestableFoo();
 			_testableFooTwo = _testableFooOne;
 
-			When.This(_testableFooOne).EqualsThis(_testableFooTwo).DoThis(() => _count++).Engage();
+			When.This(_testableFooOne).EqualsThis(_testableFooTwo).DoThis(() => _count++).Evaluate();
 		}
 
 		[Test]
@@ -58,7 +58,7 @@ namespace FluentEvaluator.Tests
 		{
 			_testableFooOne = new TestableFoo();
 
-			When.This(_testableFooOne).IsNotNull.DoThis(() => _count++).Engage();
+			When.This(_testableFooOne).IsNotNull.DoThis(() => _count++).Evaluate();
 		}
 
 		[Test]
@@ -99,7 +99,7 @@ namespace FluentEvaluator.Tests
 		{
 			_testableFooOne = new TestableFoo("asdf", _fooInt);
 			When.This(_testableFooOne).Satisfies(fooOne => fooOne.FooInt == _fooInt)
-				.DoThis(() => _actionWasPerformed = true).Engage();
+				.DoThis(() => _actionWasPerformed = true).Evaluate();
 		}
 
 		[Test]

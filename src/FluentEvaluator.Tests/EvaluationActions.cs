@@ -185,7 +185,7 @@ namespace FluentEvaluator.Tests
 		{
 			_testableFoo = null;
 
-			When.This(_testableFoo).IsNull.ThrowAnException<TestableException>().Engage();
+			When.This(_testableFoo).IsNull.ThrowAnException<TestableException>().Evaluate();
 		}
 	}
 
@@ -198,7 +198,7 @@ namespace FluentEvaluator.Tests
 		protected override void Context()
 		{
 			_testableFoo = null;
-			When.This(_testableFoo).IsNull.DoThis(() => _counter++).Engage();
+			When.This(_testableFoo).IsNull.DoThis(() => _counter++).Evaluate();
 		}
 
 		[Test]

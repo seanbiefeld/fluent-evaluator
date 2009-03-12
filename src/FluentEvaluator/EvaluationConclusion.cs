@@ -44,7 +44,7 @@ namespace FluentEvaluator
 			OtherwiseActionToPerformAfterEvaluation = otherwiseActionToPerformAfterEvaluation;
 		}
 
-		public virtual void Engage()
+		public virtual void Evaluate()
 		{
 			PerformAction();
 		}

@@ -15,7 +15,7 @@ namespace FluentEvaluator.Tests
 
 		protected override void Context()
 		{
-			When.This(true).DoThis(() => _myNumber++).Engage();
+			When.This(true).DoThis(() => _myNumber++).Evaluate();
 		}
 
 		[Test]
@@ -34,7 +34,7 @@ namespace FluentEvaluator.Tests
 
 		protected override void Context()
 		{
-			When.This(false).DoThis(() => _myNumber++).Engage();
+			When.This(false).DoThis(() => _myNumber++).Evaluate();
 		}
 
 		[Test]
