@@ -47,9 +47,11 @@
   <ItemGroup>
     <Compile Include="ConjunctiveAction.cs" />
     <Compile Include="AndEvaluation.cs" />
+    <Compile Include="EvaluationConclusion.cs" />
     <Compile Include="EvaluationUtilities.cs" />
     <Compile Include="IEvaluation.cs" />
     <Compile Include="OrEvaluation.cs" />
+    <Compile Include="OtherwiseAction.cs" />
     <Compile Include="SingularAction.cs" />
     <Compile Include="When.cs" />
     <Compile Include="EvaluationAction.cs" />
