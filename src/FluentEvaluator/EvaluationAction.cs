@@ -60,5 +60,19 @@ namespace FluentEvaluator
 		{
 			return new OrEvaluation<TypeToEvaluate>(objectToEvaluate, EvaluationToPerform);
 		}
+
+		public EvaluationAction AndWhenThis(bool boolToEvaluate)
+		{
+			EvaluationToPerform &= boolToEvaluate;
+
+			return new EvaluationAction(boolToEvaluate, EvaluationToPerform);
+		}
+
+		public EvaluationAction OrWhenThis(bool boolToEvaluate)
+		{
+			EvaluationToPerform |= boolToEvaluate;
+
+			return new EvaluationAction(boolToEvaluate, EvaluationToPerform);
+		}
 	}
 }

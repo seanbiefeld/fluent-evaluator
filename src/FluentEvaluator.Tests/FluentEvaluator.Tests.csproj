@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConjunctionBoolSpecs.cs" />
     <Compile Include="ConjunctionSpecs.cs" />
     <Compile Include="EvaluationActions.cs" />
     <Compile Include="EvaluationSpecs.cs" />

@@ -50,8 +50,10 @@
     <Compile Include="EvaluationConclusion.cs" />
     <Compile Include="EvaluationUtilities.cs" />
     <Compile Include="IEvaluation.cs" />
+    <Compile Include="IWhen.cs" />
     <Compile Include="OrEvaluation.cs" />
     <Compile Include="OtherwiseAction.cs" />
+    <Compile Include="OtherwiseWhen.cs" />
     <Compile Include="SingularAction.cs" />
     <Compile Include="When.cs" />
     <Compile Include="EvaluationAction.cs" />

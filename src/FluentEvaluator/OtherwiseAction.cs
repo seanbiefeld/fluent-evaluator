@@ -22,6 +22,14 @@ namespace FluentEvaluator
 			get;
 			set;
 		}
+
+		public virtual OtherwiseWhen When
+		{
+			get
+			{
+				return new OtherwiseWhen();
+			}
+		}
 		
 		public EvaluationConclusion ThrowAnException<ExceptionType>(params object[] exceptionArguments) where ExceptionType : Exception
 		{

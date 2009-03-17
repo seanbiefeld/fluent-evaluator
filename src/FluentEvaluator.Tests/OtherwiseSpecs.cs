@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using SpecUnit;
 
 namespace FluentEvaluator.Tests
@@ -27,4 +28,17 @@ namespace FluentEvaluator.Tests
 		}
 	}
 
+	[TestFixture]
+	[Concern("otherwise")]
+	public class when_throwing_an_exception : OtherwiseSpecs
+	{
+        [Test]
+		[Observation]
+		[ExpectedException(typeof(ApplicationException))]
+		public void should_throw_application_exception()
+		{
+			When.This(_foo).IsNotNull.DoThis(() => _myNumber++)
+				.Otherwise.ThrowAnException<ApplicationException>().Evaluate();
+		}
+	}
 }

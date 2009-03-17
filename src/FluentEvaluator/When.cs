@@ -1,6 +1,6 @@
 ﻿namespace FluentEvaluator
 {
-	public class When 
+	public class When
 	{
 		public static Evaluation<TypeToEvaluate> This<TypeToEvaluate>(TypeToEvaluate objectToEvaluate)
 		{

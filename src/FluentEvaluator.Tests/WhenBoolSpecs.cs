@@ -5,14 +5,13 @@ namespace FluentEvaluator.Tests
 {
 	public class WhenBoolSpecs : ContextSpecification
 	{
+		protected int _myNumber = 11;
 	}
 
 	[TestFixture]
 	[Concern("when(bool)")]
-	public class when_passing_in_true : ContextSpecification
+	public class when_passing_in_true : WhenBoolSpecs
 	{
-		private int _myNumber = 11;
-
 		protected override void Context()
 		{
 			When.This(true).DoThis(() => _myNumber++).Evaluate();
@@ -28,10 +27,8 @@ namespace FluentEvaluator.Tests
 
 	[TestFixture]
 	[Concern("when(bool)")]
-	public class when_passing_in_false: ContextSpecification
+	public class when_passing_in_false : WhenBoolSpecs
 	{
-		private int _myNumber = 11;
-
 		protected override void Context()
 		{
 			When.This(false).DoThis(() => _myNumber++).Evaluate();
