@@ -1,6 +1,7 @@
 ﻿using System;
+using FluentEvaluator.Actions;
 
-namespace FluentEvaluator
+namespace FluentEvaluator.Evaluations
 {
 	public class AndEvaluation<TypeToEvaluate> : IEvaluation<ConjunctiveAction, TypeToEvaluate>
 	{

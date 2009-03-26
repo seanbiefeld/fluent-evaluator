@@ -1,4 +1,7 @@
-﻿namespace FluentEvaluator
+﻿using FluentEvaluator.Actions;
+using FluentEvaluator.Evaluations;
+
+namespace FluentEvaluator.Conjunctions
 {
 	public interface IWhen
 	{

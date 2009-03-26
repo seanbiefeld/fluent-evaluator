@@ -1,4 +1,4 @@
-﻿namespace FluentEvaluator
+﻿namespace FluentEvaluator.Actions
 {
 	public class ConjunctiveAction : EvaluationAction
 	{

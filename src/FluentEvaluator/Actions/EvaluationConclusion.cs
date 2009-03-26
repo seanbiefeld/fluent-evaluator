@@ -1,6 +1,6 @@
 using System;
 
-namespace FluentEvaluator
+namespace FluentEvaluator.Actions
 {
 	public class EvaluationConclusion
 	{

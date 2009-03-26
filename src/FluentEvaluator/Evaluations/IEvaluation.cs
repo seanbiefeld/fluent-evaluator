@@ -1,6 +1,7 @@
 using System;
+using FluentEvaluator.Actions;
 
-namespace FluentEvaluator
+namespace FluentEvaluator.Evaluations
 {
 	public interface IEvaluation<TypeOfAction, TypeToEvaluate> where TypeOfAction : EvaluationAction
 	{

@@ -1,4 +1,6 @@
-namespace FluentEvaluator
+using FluentEvaluator.Evaluations;
+
+namespace FluentEvaluator.Conjunctions
 {
 	public interface IOrWhen : IWhen
 	{

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using FluentEvaluator.Conjunctions;
 using NUnit.Framework;
 using SpecUnit;
 

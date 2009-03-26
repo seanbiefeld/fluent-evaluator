@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using FluentEvaluator.Conjunctions;
 
 namespace FluentEvaluator
 {

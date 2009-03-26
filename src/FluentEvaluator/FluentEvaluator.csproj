@@ -42,26 +42,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="And.cs" />
-    <Compile Include="AndWhen.cs" />
-    <Compile Include="ConjunctiveAction.cs" />
-    <Compile Include="AndEvaluation.cs" />
-    <Compile Include="EvaluationConclusion.cs" />
+    <Compile Include="Conjunctions\And.cs" />
+    <Compile Include="Conjunctions\AndWhen.cs" />
+    <Compile Include="Actions\ConjunctiveAction.cs" />
+    <Compile Include="Evaluations\AndEvaluation.cs" />
+    <Compile Include="Actions\EvaluationConclusion.cs" />
     <Compile Include="EvaluationUtilities.cs" />
-    <Compile Include="IAndWhen.cs" />
-    <Compile Include="IEvaluation.cs" />
-    <Compile Include="IEvaluationAction.cs" />
-    <Compile Include="IOrWhen.cs" />
-    <Compile Include="IWhen.cs" />
-    <Compile Include="Or.cs" />
-    <Compile Include="OrEvaluation.cs" />
-    <Compile Include="OrWhen.cs" />
-    <Compile Include="OtherwiseAction.cs" />
-    <Compile Include="OtherwiseWhen.cs" />
-    <Compile Include="SingularAction.cs" />
-    <Compile Include="When.cs" />
-    <Compile Include="EvaluationAction.cs" />
-    <Compile Include="Evaluation.cs" />
+    <Compile Include="Conjunctions\IAndWhen.cs" />
+    <Compile Include="Evaluations\IEvaluation.cs" />
+    <Compile Include="Actions\IEvaluationAction.cs" />
+    <Compile Include="Conjunctions\IOrWhen.cs" />
+    <Compile Include="Conjunctions\IWhen.cs" />
+    <Compile Include="Conjunctions\Or.cs" />
+    <Compile Include="Evaluations\OrEvaluation.cs" />
+    <Compile Include="Conjunctions\OrWhen.cs" />
+    <Compile Include="Actions\OtherwiseAction.cs" />
+    <Compile Include="Conjunctions\OtherwiseWhen.cs" />
+    <Compile Include="Actions\SingularAction.cs" />
+    <Compile Include="Conjunctions\When.cs" />
+    <Compile Include="Actions\EvaluationAction.cs" />
+    <Compile Include="Evaluations\Evaluation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

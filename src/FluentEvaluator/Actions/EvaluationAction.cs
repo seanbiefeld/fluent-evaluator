@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Reflection;
+using FluentEvaluator.Conjunctions;
 
-namespace FluentEvaluator
+namespace FluentEvaluator.Actions
 {
 	public class EvaluationAction : IEvaluationAction
 	{
@@ -52,12 +53,12 @@ namespace FluentEvaluator
 		public EvaluationConclusion ThrowAnException<ExceptionType>(params object[] exceptionArguments) where ExceptionType : Exception
 		{
 			ActionToPerformAfterEvaluation = () =>
-			{
-				ConstructorInfo currentCtorInfo = typeof(ExceptionType).GetConstructor(EvaluationUtilities.GetConstructorTypes(exceptionArguments));
+			                                 	{
+			                                 		ConstructorInfo currentCtorInfo = typeof(ExceptionType).GetConstructor(EvaluationUtilities.GetConstructorTypes(exceptionArguments));
 
-				if (currentCtorInfo != null)
-					throw (ExceptionType)currentCtorInfo.Invoke(exceptionArguments);
-			};
+			                                 		if (currentCtorInfo != null)
+			                                 			throw (ExceptionType)currentCtorInfo.Invoke(exceptionArguments);
+			                                 	};
 			return new EvaluationConclusion(EvaluationToPerform, ActionToPerformAfterEvaluation);
 		}
 

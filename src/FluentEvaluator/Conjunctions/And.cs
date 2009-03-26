@@ -1,4 +1,4 @@
-namespace FluentEvaluator
+namespace FluentEvaluator.Conjunctions
 {
 	public class And
 	{

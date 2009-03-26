@@ -1,6 +1,7 @@
 ﻿using System;
+using FluentEvaluator.Actions;
 
-namespace FluentEvaluator
+namespace FluentEvaluator.Evaluations
 {
 	public class OrEvaluation<TypeToEvaluate> : IEvaluation<ConjunctiveAction, TypeToEvaluate>
 	{
