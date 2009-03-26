@@ -43,16 +43,19 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AndEvaluations.cs" />
     <Compile Include="ConjunctionBoolSpecs.cs" />
-    <Compile Include="ConjunctionSpecs.cs" />
     <Compile Include="EvaluationActions.cs" />
     <Compile Include="EvaluationSpecs.cs" />
     <Compile Include="EvaluationUtilitiesSpecs.cs" />
+    <Compile Include="OrEvaluations.cs" />
     <Compile Include="OtherwiseSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WhenBoolSpecs.cs" />
