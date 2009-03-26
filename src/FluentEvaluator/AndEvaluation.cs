@@ -32,7 +32,9 @@ namespace FluentEvaluator
 		{
 			get
 			{
-				EvaluationToPerform &= (Equals(ObjectToEvaluate, default(TypeToEvaluate)));
+				if(EvaluationToPerform)
+					EvaluationToPerform &= (Equals(ObjectToEvaluate, default(TypeToEvaluate)));
+
 				return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
 			}
 		}
@@ -41,14 +43,18 @@ namespace FluentEvaluator
 		{
 			get
 			{
-				EvaluationToPerform &= EvaluationUtilities.CheckIfObjectToEvaluateIsEmpty(ObjectToEvaluate);
+				if (EvaluationToPerform)
+					EvaluationToPerform &= EvaluationUtilities.CheckIfObjectToEvaluateIsEmpty(ObjectToEvaluate);
+
 				return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
 			}
 		}
 
 		public ConjunctiveAction EqualsThis(object objectToEqual)
 		{
-			EvaluationToPerform &= (ObjectToEvaluate.Equals(objectToEqual));
+			if (EvaluationToPerform)
+				EvaluationToPerform &= (ObjectToEvaluate.Equals(objectToEqual));
+
 			return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
 		}
 
@@ -56,16 +62,21 @@ namespace FluentEvaluator
 		{
 			get
 			{
-				EvaluationToPerform &= (!Equals(ObjectToEvaluate, default(TypeToEvaluate)));
+				if (EvaluationToPerform)
+					EvaluationToPerform &= (!Equals(ObjectToEvaluate, default(TypeToEvaluate)));
+
 				return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
 			}
 		}
 
 		public ConjunctiveAction Satisfies(Predicate<TypeToEvaluate> match)
 		{
-			EvaluationUtilities.EnsurePredicateIsValid(match);
+			if (EvaluationToPerform)
+			{
+				EvaluationUtilities.EnsurePredicateIsValid(match);
 
-			EvaluationToPerform &= (match(ObjectToEvaluate));
+				EvaluationToPerform &= (match(ObjectToEvaluate));
+			}
 
 			return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
 		}

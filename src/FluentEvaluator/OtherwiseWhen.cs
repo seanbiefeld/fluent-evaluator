@@ -1,19 +1,15 @@
 ﻿namespace FluentEvaluator
 {
-	public class OtherwiseWhen : IWhen
+	public class OtherwiseWhen : ISingularWhen
 	{
-		#region Implementation of IWhen
-
-		public Evaluation<TypeToEvaluate> This<TypeToEvaluate>(TypeToEvaluate objectToEvaluate)
-		{
-			return new Evaluation<TypeToEvaluate>(objectToEvaluate);
-		}
-
-		public EvaluationAction This(bool boolToEvaluate)
+		public IEvaluationAction This(bool boolToEvaluate)
 		{
 			return new EvaluationAction(boolToEvaluate, boolToEvaluate);
 		}
 
-		#endregion
+		public IEvaluation<SingularAction<TypeToEvaluate>, TypeToEvaluate> This<TypeToEvaluate>(TypeToEvaluate objectToEvaluate)
+		{
+			return new Evaluation<TypeToEvaluate>(objectToEvaluate);
+		}
 	}
 }

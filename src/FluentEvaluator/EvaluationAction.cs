@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace FluentEvaluator
 {
-	public class EvaluationAction
+	public class EvaluationAction : IEvaluationAction
 	{
 		public EvaluationAction(object objectToEvaluate, bool evaluationToPerform)
 		{
@@ -11,7 +11,7 @@ namespace FluentEvaluator
 			EvaluationToPerform = evaluationToPerform;
 		}
 
-        #region properties
+		#region properties
 
 		protected object ObjectToEvaluate
 		{
@@ -29,6 +29,22 @@ namespace FluentEvaluator
 		{
 			get;
 			set;
+		}
+
+		public And And
+		{
+			get
+			{
+				return new And(EvaluationToPerform);
+			}
+		}
+
+		public Or Or
+		{
+			get
+			{
+				return new Or(EvaluationToPerform);
+			}
 		}
 
 		#endregion
@@ -49,30 +65,6 @@ namespace FluentEvaluator
 		{
 			ActionToPerformAfterEvaluation = actionToPerform;
 			return new EvaluationConclusion(EvaluationToPerform, ActionToPerformAfterEvaluation);
-		}
-
-		public AndEvaluation<TypeToEvaluate> AndWhenThis<TypeToEvaluate>(TypeToEvaluate objectToEvaluate)
-		{
-			return new AndEvaluation<TypeToEvaluate>(objectToEvaluate, EvaluationToPerform);
-		}
-
-		public OrEvaluation<TypeToEvaluate> OrWhenThis<TypeToEvaluate>(TypeToEvaluate objectToEvaluate)
-		{
-			return new OrEvaluation<TypeToEvaluate>(objectToEvaluate, EvaluationToPerform);
-		}
-
-		public EvaluationAction AndWhenThis(bool boolToEvaluate)
-		{
-			EvaluationToPerform &= boolToEvaluate;
-
-			return new EvaluationAction(boolToEvaluate, EvaluationToPerform);
-		}
-
-		public EvaluationAction OrWhenThis(bool boolToEvaluate)
-		{
-			EvaluationToPerform |= boolToEvaluate;
-
-			return new EvaluationAction(boolToEvaluate, EvaluationToPerform);
 		}
 	}
 }

@@ -34,7 +34,10 @@ namespace FluentEvaluator
 
 		public static void EnsurePredicateIsValid<T>(Predicate<T> match)
 		{
-			When.This(match).IsNull.ThrowAnException<ArgumentNullException>(string.Format("Please provide a satisfaction to match against."));
+			When.This(match).IsNull
+				.ThrowAnException<ArgumentNullException>
+				(string.Format("Please provide a satisfaction to match against."))
+				.Evaluate();
 		}
 	}
 }

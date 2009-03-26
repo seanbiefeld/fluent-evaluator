@@ -35,18 +35,25 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="And.cs" />
+    <Compile Include="AndWhen.cs" />
     <Compile Include="ConjunctiveAction.cs" />
     <Compile Include="AndEvaluation.cs" />
     <Compile Include="EvaluationConclusion.cs" />
     <Compile Include="EvaluationUtilities.cs" />
     <Compile Include="IEvaluation.cs" />
+    <Compile Include="IEvaluationAction.cs" />
     <Compile Include="IWhen.cs" />
+    <Compile Include="Or.cs" />
     <Compile Include="OrEvaluation.cs" />
+    <Compile Include="OrWhen.cs" />
     <Compile Include="OtherwiseAction.cs" />
     <Compile Include="OtherwiseWhen.cs" />
     <Compile Include="SingularAction.cs" />

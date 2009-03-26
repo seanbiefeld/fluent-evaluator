@@ -9,13 +9,14 @@ namespace FluentEvaluator.Tests
 	}
 
 	[TestFixture]
-	[Concern("OrWhenThis(bool)")]
+	[Concern("Or.When.This(bool)")]
 	public class when_the_or_evaluates_to_true : ConjunctionBoolSpecs
 	{
 		protected override void Context()
 		{
-			When.This(false).OrWhenThis(true)
-				.DoThis(() => _myNumber++).Evaluate();
+			When.This(false)
+				.Or.When.This(true)
+			.DoThis(() => _myNumber++).Evaluate();
 		}
 
 		[Test]
@@ -27,13 +28,14 @@ namespace FluentEvaluator.Tests
 	}
 
 	[TestFixture]
-	[Concern("OrWhenThis(bool)")]
+	[Concern("Or.When.This(bool)")]
 	public class when_the_or_evaluates_to_false : ConjunctionBoolSpecs
 	{
 		protected override void Context()
 		{
-			When.This(false).OrWhenThis(false)
-				.DoThis(() => _myNumber++).Evaluate();
+			When.This(false)
+				.Or.When.This(false)
+			.DoThis(() => _myNumber++).Evaluate();
 		}
 
 		[Test]
@@ -45,13 +47,14 @@ namespace FluentEvaluator.Tests
 	}
 
 	[TestFixture]
-	[Concern("AndWhenThis(bool)")]
+	[Concern("And.When.This(bool)")]
 	public class when_the_and_evaluates_to_true : ConjunctionBoolSpecs
 	{
 		protected override void Context()
 		{
-			When.This(true).AndWhenThis(true)
-				.DoThis(() => _myNumber++).Evaluate();
+			When.This(true)
+				.And.When.This(true)
+			.DoThis(() => _myNumber++).Evaluate();
 		}
 
 		[Test]
@@ -63,13 +66,14 @@ namespace FluentEvaluator.Tests
 	}
 
 	[TestFixture]
-	[Concern("AndWhenThis(bool)")]
+	[Concern("And.When.This(bool)")]
 	public class when_the_and_evaluates_to_false : ConjunctionBoolSpecs
 	{
 		protected override void Context()
 		{
-			When.This(true).AndWhenThis(false)
-				.DoThis(() => _myNumber++).Evaluate();
+			When.This(true)
+				.And.When.This(false)
+			.DoThis(() => _myNumber++).Evaluate();
 		}
 
 		[Test]

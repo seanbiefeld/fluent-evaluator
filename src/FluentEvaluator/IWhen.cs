@@ -2,8 +2,21 @@
 {
 	public interface IWhen
 	{
-		Evaluation<TypeToEvaluate> This<TypeToEvaluate>(TypeToEvaluate objectToEvaluate);
+		IEvaluationAction This(bool boolToEvaluate);
+	}
 
-		EvaluationAction This(bool boolToEvaluate);
+	public interface ISingularWhen : IWhen
+	{
+		IEvaluation<SingularAction<TypeToEvaluate>, TypeToEvaluate> This<TypeToEvaluate>(TypeToEvaluate objectToEvaluate);
+	}
+
+	public interface IAndWhen : IWhen
+	{
+		AndEvaluation<TypeToEvaluate> This<TypeToEvaluate>(TypeToEvaluate objectToEvaluate);
+	}
+
+	public interface IOrWhen : IWhen
+	{
+		OrEvaluation<TypeToEvaluate> This<TypeToEvaluate>(TypeToEvaluate objectToEvaluate);
 	}
 }
