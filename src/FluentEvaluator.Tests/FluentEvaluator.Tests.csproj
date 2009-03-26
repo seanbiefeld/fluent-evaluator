@@ -58,6 +58,7 @@
     <Compile Include="OrEvaluations.cs" />
     <Compile Include="OtherwiseSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SingularActions.cs" />
     <Compile Include="WhenBoolSpecs.cs" />
   </ItemGroup>
   <ItemGroup>
