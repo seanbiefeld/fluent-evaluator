@@ -48,8 +48,10 @@
     <Compile Include="AndEvaluation.cs" />
     <Compile Include="EvaluationConclusion.cs" />
     <Compile Include="EvaluationUtilities.cs" />
+    <Compile Include="IAndWhen.cs" />
     <Compile Include="IEvaluation.cs" />
     <Compile Include="IEvaluationAction.cs" />
+    <Compile Include="IOrWhen.cs" />
     <Compile Include="IWhen.cs" />
     <Compile Include="Or.cs" />
     <Compile Include="OrEvaluation.cs" />

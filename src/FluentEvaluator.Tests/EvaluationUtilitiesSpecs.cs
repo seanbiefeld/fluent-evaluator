@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using NUnit.Framework;
@@ -219,6 +220,19 @@ namespace FluentEvaluator.Tests
 		public void should_be_false()
 		{
 			(EvaluationUtilities.CheckIfObjectToEvaluateIsEmpty(_testableString)).ShouldBeFalse();
+		}
+	}
+
+	[TestFixture]
+	[Concern("validating predicate")]
+	public class when_the_predicate_is_invalid : ContextSpecification
+	{
+		[Test]
+		[Observation]
+		[ExpectedException(typeof(Exception))]
+		public void should_throw_an_error()
+		{
+			EvaluationUtilities.EnsurePredicateIsValid<object>(null);
 		}
 	}
 }

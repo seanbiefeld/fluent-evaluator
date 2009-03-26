@@ -9,14 +9,4 @@
 	{
 		IEvaluation<SingularAction<TypeToEvaluate>, TypeToEvaluate> This<TypeToEvaluate>(TypeToEvaluate objectToEvaluate);
 	}
-
-	public interface IAndWhen : IWhen
-	{
-		AndEvaluation<TypeToEvaluate> This<TypeToEvaluate>(TypeToEvaluate objectToEvaluate);
-	}
-
-	public interface IOrWhen : IWhen
-	{
-		OrEvaluation<TypeToEvaluate> This<TypeToEvaluate>(TypeToEvaluate objectToEvaluate);
-	}
 }
