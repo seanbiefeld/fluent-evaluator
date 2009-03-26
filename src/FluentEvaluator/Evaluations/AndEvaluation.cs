@@ -3,7 +3,7 @@ using FluentEvaluator.Actions;
 
 namespace FluentEvaluator.Evaluations
 {
-	public class AndEvaluation<TypeToEvaluate> : IEvaluation<ConjunctiveAction, TypeToEvaluate>
+	public class AndEvaluation<TypeToEvaluate> : IEvaluation<EvaluationAction, TypeToEvaluate>
 	{
 		public AndEvaluation(TypeToEvaluate objectToEvaluate, bool conjuctiveEvaluation)
 		{
@@ -29,48 +29,48 @@ namespace FluentEvaluator.Evaluations
 
 		#region public members
 
-		public ConjunctiveAction IsNull
+		public EvaluationAction IsNull
 		{
 			get
 			{
 				if(EvaluationToPerform)
 					EvaluationToPerform &= (Equals(ObjectToEvaluate, default(TypeToEvaluate)));
 
-				return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
+				return new EvaluationAction(ObjectToEvaluate, EvaluationToPerform);
 			}
 		}
 
-		public ConjunctiveAction IsEmpty
+		public EvaluationAction IsEmpty
 		{
 			get
 			{
 				if (EvaluationToPerform)
 					EvaluationToPerform &= EvaluationUtilities.CheckIfObjectToEvaluateIsEmpty(ObjectToEvaluate);
 
-				return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
+				return new EvaluationAction(ObjectToEvaluate, EvaluationToPerform);
 			}
 		}
 
-		public ConjunctiveAction EqualsThis(object objectToEqual)
+		public EvaluationAction EqualsThis(object objectToEqual)
 		{
 			if (EvaluationToPerform)
 				EvaluationToPerform &= (ObjectToEvaluate.Equals(objectToEqual));
 
-			return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
+			return new EvaluationAction(ObjectToEvaluate, EvaluationToPerform);
 		}
 
-		public ConjunctiveAction IsNotNull
+		public EvaluationAction IsNotNull
 		{
 			get
 			{
 				if (EvaluationToPerform)
 					EvaluationToPerform &= (!Equals(ObjectToEvaluate, default(TypeToEvaluate)));
 
-				return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
+				return new EvaluationAction(ObjectToEvaluate, EvaluationToPerform);
 			}
 		}
 
-		public ConjunctiveAction Satisfies(Predicate<TypeToEvaluate> match)
+		public EvaluationAction Satisfies(Predicate<TypeToEvaluate> match)
 		{
 			if (EvaluationToPerform)
 			{
@@ -79,7 +79,7 @@ namespace FluentEvaluator.Evaluations
 				EvaluationToPerform &= (match(ObjectToEvaluate));
 			}
 
-			return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
+			return new EvaluationAction(ObjectToEvaluate, EvaluationToPerform);
 		}
 
 		#endregion

@@ -3,7 +3,7 @@ using FluentEvaluator.Actions;
 
 namespace FluentEvaluator.Evaluations
 {
-	public class OrEvaluation<TypeToEvaluate> : IEvaluation<ConjunctiveAction, TypeToEvaluate>
+	public class OrEvaluation<TypeToEvaluate> : IEvaluation<EvaluationAction, TypeToEvaluate>
 	{
 		public OrEvaluation(TypeToEvaluate objectToEvaluate, bool conjuctiveEvaluation)
 		{
@@ -29,46 +29,46 @@ namespace FluentEvaluator.Evaluations
 
 		#region public members
 
-		public ConjunctiveAction IsNull
+		public EvaluationAction IsNull
 		{
 			get
 			{
 				EvaluationToPerform |= (Equals(ObjectToEvaluate, default(TypeToEvaluate)));
-				return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
+				return new EvaluationAction(ObjectToEvaluate, EvaluationToPerform);
 			}
 		}
 
-		public ConjunctiveAction IsEmpty
+		public EvaluationAction IsEmpty
 		{
 			get
 			{
 				EvaluationToPerform |= EvaluationUtilities.CheckIfObjectToEvaluateIsEmpty(ObjectToEvaluate);
-				return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
+				return new EvaluationAction(ObjectToEvaluate, EvaluationToPerform);
 			}
 		}
 
-		public ConjunctiveAction EqualsThis(object objectToEqual)
+		public EvaluationAction EqualsThis(object objectToEqual)
 		{
 			EvaluationToPerform |= (ObjectToEvaluate.Equals(objectToEqual));
-			return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
+			return new EvaluationAction(ObjectToEvaluate, EvaluationToPerform);
 		}
 
-		public ConjunctiveAction IsNotNull
+		public EvaluationAction IsNotNull
 		{
 			get
 			{
 				EvaluationToPerform |= (!Equals(ObjectToEvaluate, default(TypeToEvaluate)));
-				return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
+				return new EvaluationAction(ObjectToEvaluate, EvaluationToPerform);
 			}
 		}
 
-		public ConjunctiveAction Satisfies(Predicate<TypeToEvaluate> match)
+		public EvaluationAction Satisfies(Predicate<TypeToEvaluate> match)
 		{
 			EvaluationUtilities.EnsurePredicateIsValid(match);
 
 			EvaluationToPerform |= (match(ObjectToEvaluate));
 
-			return new ConjunctiveAction(ObjectToEvaluate, EvaluationToPerform);
+			return new EvaluationAction(ObjectToEvaluate, EvaluationToPerform);
 		}
         
 		#endregion

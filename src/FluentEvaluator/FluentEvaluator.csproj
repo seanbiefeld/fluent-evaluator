@@ -44,7 +44,6 @@
   <ItemGroup>
     <Compile Include="Conjunctions\And.cs" />
     <Compile Include="Conjunctions\AndWhen.cs" />
-    <Compile Include="Actions\ConjunctiveAction.cs" />
     <Compile Include="Evaluations\AndEvaluation.cs" />
     <Compile Include="Actions\EvaluationConclusion.cs" />
     <Compile Include="EvaluationUtilities.cs" />
