@@ -5,10 +5,13 @@ namespace FluentEvaluator.Evaluations
 {
 	public class Evaluation<TypeToEvaluate> : IEvaluation<SingularAction<TypeToEvaluate>, TypeToEvaluate>
 	{
-		public Evaluation(TypeToEvaluate objectToEvaluate)
+		public Evaluation(TypeToEvaluate objectToEvaluate, bool continueEvaluations)
 		{
 			ObjectToEvaluate = objectToEvaluate;
+			ContinueEvaluations = continueEvaluations;
 		}
+
+		protected bool ContinueEvaluations { get; set; }
 
 		#region properties
 

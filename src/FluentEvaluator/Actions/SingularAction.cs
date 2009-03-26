@@ -5,7 +5,7 @@ namespace FluentEvaluator.Actions
 {
 	public class SingularAction<TypeToEvaluate> : EvaluationAction
 	{
-		public SingularAction(object objectToEvaluate, bool evaluationToPerform) : base(objectToEvaluate, evaluationToPerform)
+		public SingularAction(object objectToEvaluate, bool evaluationToPerform) : base(objectToEvaluate, evaluationToPerform, true)
 		{
 		}
 

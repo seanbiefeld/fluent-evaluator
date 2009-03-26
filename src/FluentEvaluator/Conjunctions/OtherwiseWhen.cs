@@ -3,16 +3,45 @@ using FluentEvaluator.Evaluations;
 
 namespace FluentEvaluator.Conjunctions
 {
-	public class OtherwiseWhen : ISingularWhen
+	public class OtherwiseWhen : IOtherwiseWhen
 	{
-		public IEvaluationAction This(bool boolToEvaluate)
+		public OtherwiseWhen(bool evaluationToPerform, EvaluationConclusion evaluationConclusion)
 		{
-			return new EvaluationAction(boolToEvaluate, boolToEvaluate);
+			if(evaluationToPerform)
+			{
+				evaluationConclusion.Evaluate(true);
+				ContinueEvaluations = false;
+			}
+
+			EvaluationToPerform = evaluationToPerform;
+
 		}
 
-		public IEvaluation<SingularAction<TypeToEvaluate>, TypeToEvaluate> This<TypeToEvaluate>(TypeToEvaluate objectToEvaluate)
+		protected bool EvaluationToPerform
 		{
-			return new Evaluation<TypeToEvaluate>(objectToEvaluate);
+			get;
+			set;
 		}
+
+		public virtual IEvaluationAction This(bool boolToEvaluate)
+		{
+			EvaluationToPerform = boolToEvaluate;
+
+			return new EvaluationAction(boolToEvaluate, EvaluationToPerform, ContinueEvaluations);
+		}
+
+		protected bool ContinueEvaluations
+		{
+			get; set;
+		}
+
+		public virtual Evaluation<TypeToEvaluate> This<TypeToEvaluate>(TypeToEvaluate objectToEvaluate)
+		{
+			return new Evaluation<TypeToEvaluate>(objectToEvaluate, ContinueEvaluations);
+		}
+	}
+
+	public interface IOtherwiseWhen:IWhen
+	{
 	}
 }

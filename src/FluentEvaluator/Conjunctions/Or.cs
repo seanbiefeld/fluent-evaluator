@@ -8,16 +8,23 @@
 			set;
 		}
 
-		public Or(bool evaluationToPerform)
+		protected bool ContinueEvaluations
 		{
-			EvaluationToPerform = evaluationToPerform;	
+			get;
+			set;
+		}
+
+		public Or(bool evaluationToPerform, bool continueEvaluations)
+		{
+			EvaluationToPerform = evaluationToPerform;
+			ContinueEvaluations = continueEvaluations;
 		}
 
 		public virtual OrWhen When
 		{
 			get
 			{
-				return new OrWhen(EvaluationToPerform);
+				return new OrWhen(EvaluationToPerform, ContinueEvaluations);
 			}
 		}
 	}

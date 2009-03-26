@@ -7,12 +7,12 @@ namespace FluentEvaluator.Conjunctions
 	{
 		public static Evaluation<TypeToEvaluate> This<TypeToEvaluate>(TypeToEvaluate objectToEvaluate)
 		{
-			return new Evaluation<TypeToEvaluate>(objectToEvaluate);
+			return new Evaluation<TypeToEvaluate>(objectToEvaluate, true);
 		}
 
 		public static EvaluationAction This(bool boolToEvaluate)
 		{
-			return new EvaluationAction(boolToEvaluate, boolToEvaluate);
+			return new EvaluationAction(boolToEvaluate, boolToEvaluate, true);
 		}
 	}
 }

@@ -5,10 +5,11 @@ namespace FluentEvaluator.Evaluations
 {
 	public class AndEvaluation<TypeToEvaluate> : IEvaluation<EvaluationAction, TypeToEvaluate>
 	{
-		public AndEvaluation(TypeToEvaluate objectToEvaluate, bool conjuctiveEvaluation)
+		public AndEvaluation(TypeToEvaluate objectToEvaluate, bool conjuctiveEvaluation, bool continueEvaluations)
 		{
 			ObjectToEvaluate = objectToEvaluate;
 			EvaluationToPerform = conjuctiveEvaluation;
+			ContinueEvaluations = continueEvaluations;
 		}
 
 		#region properties
@@ -25,6 +26,12 @@ namespace FluentEvaluator.Evaluations
 			set;
 		}
 
+		protected virtual bool ContinueEvaluations
+		{
+			get;
+			set;
+		}
+
 		#endregion
 
 		#region public members
@@ -36,7 +43,7 @@ namespace FluentEvaluator.Evaluations
 				if(EvaluationToPerform)
 					EvaluationToPerform &= (Equals(ObjectToEvaluate, default(TypeToEvaluate)));
 
-				return new EvaluationAction(ObjectToEvaluate, EvaluationToPerform);
+				return new EvaluationAction(ObjectToEvaluate, EvaluationToPerform, ContinueEvaluations);
 			}
 		}
 
@@ -47,7 +54,7 @@ namespace FluentEvaluator.Evaluations
 				if (EvaluationToPerform)
 					EvaluationToPerform &= EvaluationUtilities.CheckIfObjectToEvaluateIsEmpty(ObjectToEvaluate);
 
-				return new EvaluationAction(ObjectToEvaluate, EvaluationToPerform);
+				return new EvaluationAction(ObjectToEvaluate, EvaluationToPerform, ContinueEvaluations);
 			}
 		}
 
@@ -56,7 +63,7 @@ namespace FluentEvaluator.Evaluations
 			if (EvaluationToPerform)
 				EvaluationToPerform &= (ObjectToEvaluate.Equals(objectToEqual));
 
-			return new EvaluationAction(ObjectToEvaluate, EvaluationToPerform);
+			return new EvaluationAction(ObjectToEvaluate, EvaluationToPerform, ContinueEvaluations);
 		}
 
 		public EvaluationAction IsNotNull
@@ -66,7 +73,7 @@ namespace FluentEvaluator.Evaluations
 				if (EvaluationToPerform)
 					EvaluationToPerform &= (!Equals(ObjectToEvaluate, default(TypeToEvaluate)));
 
-				return new EvaluationAction(ObjectToEvaluate, EvaluationToPerform);
+				return new EvaluationAction(ObjectToEvaluate, EvaluationToPerform, ContinueEvaluations);
 			}
 		}
 
@@ -79,7 +86,7 @@ namespace FluentEvaluator.Evaluations
 				EvaluationToPerform &= (match(ObjectToEvaluate));
 			}
 
-			return new EvaluationAction(ObjectToEvaluate, EvaluationToPerform);
+			return new EvaluationAction(ObjectToEvaluate, EvaluationToPerform, ContinueEvaluations);
 		}
 
 		#endregion

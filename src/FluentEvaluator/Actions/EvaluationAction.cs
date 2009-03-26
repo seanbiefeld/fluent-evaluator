@@ -6,10 +6,30 @@ namespace FluentEvaluator.Actions
 {
 	public class EvaluationAction : IEvaluationAction
 	{
-		public EvaluationAction(object objectToEvaluate, bool evaluationToPerform)
+		//public EvaluationAction(object objectToEvaluate, bool evaluationToPerform)
+		//{
+		//    ObjectToEvaluate = objectToEvaluate;
+		//    EvaluationToPerform = evaluationToPerform;
+		//}
+
+		public EvaluationAction(object objectToEvaluate, bool evaluationToPerform, bool continueEvaluations)
 		{
 			ObjectToEvaluate = objectToEvaluate;
 			EvaluationToPerform = evaluationToPerform;
+			ContinueEvaluations = continueEvaluations;
+		}
+
+		private bool _continueEvaluations = true;
+		protected bool ContinueEvaluations
+		{ 
+			get
+			{
+				return _continueEvaluations;
+			}
+			set
+			{
+				_continueEvaluations = value;
+			}
 		}
 
 		#region properties
@@ -36,7 +56,7 @@ namespace FluentEvaluator.Actions
 		{
 			get
 			{
-				return new And(EvaluationToPerform);
+				return new And(EvaluationToPerform, ContinueEvaluations);
 			}
 		}
 
@@ -44,7 +64,7 @@ namespace FluentEvaluator.Actions
 		{
 			get
 			{
-				return new Or(EvaluationToPerform);
+				return new Or(EvaluationToPerform, ContinueEvaluations);
 			}
 		}
 
@@ -59,13 +79,13 @@ namespace FluentEvaluator.Actions
          		if (currentCtorInfo != null)
          			throw (ExceptionType)currentCtorInfo.Invoke(exceptionArguments);
          	};
-			return new EvaluationConclusion(EvaluationToPerform, ActionToPerformAfterEvaluation);
+			return new EvaluationConclusion(EvaluationToPerform, ActionToPerformAfterEvaluation, ContinueEvaluations);
 		}
 
 		public EvaluationConclusion DoThis(Action actionToPerform)
 		{
 			ActionToPerformAfterEvaluation = actionToPerform;
-			return new EvaluationConclusion(EvaluationToPerform, ActionToPerformAfterEvaluation);
+			return new EvaluationConclusion(EvaluationToPerform, ActionToPerformAfterEvaluation, ContinueEvaluations);
 		}
 	}
 }

@@ -8,16 +8,23 @@ namespace FluentEvaluator.Conjunctions
 			set;
 		}
 
-		public And(bool evaluationToPerform)
+		protected bool ContinueEvaluations
 		{
-			EvaluationToPerform = evaluationToPerform;	
+			get;
+			set;
+		}
+
+		public And(bool evaluationToPerform, bool continueEvaluations)
+		{
+			EvaluationToPerform = evaluationToPerform;
+			ContinueEvaluations = continueEvaluations;
 		}
 
 		public virtual AndWhen When
 		{
 			get
 			{
-				return new AndWhen(EvaluationToPerform);
+				return new AndWhen(EvaluationToPerform, ContinueEvaluations);
 			}
 		}
 	}
