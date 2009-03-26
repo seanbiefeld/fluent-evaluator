@@ -1,6 +1,4 @@
 using System;
-using System.Reflection;
-using FluentEvaluator.Conjunctions;
 
 namespace FluentEvaluator.Actions
 {
@@ -79,66 +77,5 @@ namespace FluentEvaluator.Actions
 			}
 		}
 
-	}
-
-	public class Otherwise
-	{
-		public Otherwise(bool evaluationToPerform, Action actionToPerformAfterEvaluation, EvaluationConclusion evaluationConclusion, bool continueEvaluations)
-		{
-			EvaluationToPerform = evaluationToPerform;
-			ActionToPerformAfterEvaluation = actionToPerformAfterEvaluation;
-			CurrentEvaluationConclusion = evaluationConclusion;
-			ContinueEvaluations = continueEvaluations;
-		}
-
-		protected Action ActionToPerformAfterEvaluation
-		{
-			get;
-			set;
-		}
-
-		protected bool EvaluationToPerform
-		{
-			get;
-			set;
-		}
-
-		protected EvaluationConclusion CurrentEvaluationConclusion
-		{
-			get;
-			set;
-		}
-
-		protected bool ContinueEvaluations
-		{
-			get;
-			set;
-		}
-
-		public virtual OtherwiseWhen When
-		{
-			get
-			{
-				return new OtherwiseWhen(EvaluationToPerform, CurrentEvaluationConclusion);
-			}
-		}
-
-		public EvaluationConclusion ThrowAnException<ExceptionType>(params object[] exceptionArguments) where ExceptionType : Exception
-		{
-			Action otherwiseActionToPerform = () =>
-			{
-				ConstructorInfo currentCtorInfo = typeof(ExceptionType).GetConstructor(EvaluationUtilities.GetConstructorTypes(exceptionArguments));
-
-				if (currentCtorInfo != null)
-					throw (ExceptionType)currentCtorInfo.Invoke(exceptionArguments);
-			};
-			return new EvaluationConclusion(EvaluationToPerform, ActionToPerformAfterEvaluation, otherwiseActionToPerform, ContinueEvaluations);
-		}
-
-		public EvaluationConclusion DoThis(Action actionToPerform)
-		{
-			Action otherwiseActionToPerform = actionToPerform;
-			return new EvaluationConclusion(EvaluationToPerform, ActionToPerformAfterEvaluation, otherwiseActionToPerform, ContinueEvaluations);
-		}
 	}
 }

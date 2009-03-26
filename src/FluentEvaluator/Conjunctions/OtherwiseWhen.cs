@@ -5,8 +5,10 @@ namespace FluentEvaluator.Conjunctions
 {
 	public class OtherwiseWhen : IOtherwiseWhen
 	{
-		public OtherwiseWhen(bool evaluationToPerform, EvaluationConclusion evaluationConclusion)
+		public OtherwiseWhen(bool evaluationToPerform, EvaluationConclusion evaluationConclusion, bool continueEvaluations)
 		{
+			ContinueEvaluations = continueEvaluations;
+
 			if(evaluationToPerform)
 			{
 				evaluationConclusion.Evaluate(true);
@@ -16,6 +18,7 @@ namespace FluentEvaluator.Conjunctions
 			EvaluationToPerform = evaluationToPerform;
 
 		}
+
 
 		protected bool EvaluationToPerform
 		{
