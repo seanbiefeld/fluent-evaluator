@@ -101,7 +101,7 @@ namespace FluentEvaluator.Tests
 		protected override void Context()
 		{
 			When.This(false).DoThis(() => count = 1)
-				.Otherwise.When.This(true).DoThis(() => count = 2);
+				.Otherwise.When.This(true).DoThis(() => count = 2).Evaluate();
 		}
 
 		[Test]
