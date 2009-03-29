@@ -6,8 +6,7 @@
     <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{29402162-E353-4B2C-B074-9547D0BC410A}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <OutputType>Library</OutputType>    
     <RootNamespace>FluentEvaluator</RootNamespace>
     <AssemblyName>FluentEvaluator</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
@@ -44,8 +43,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>CommonAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Actions\Otherwise.cs" />
-    <Compile Include="CommonAssemblyInfo.cs" />
     <Compile Include="Conjunctions\And.cs" />
     <Compile Include="Conjunctions\AndWhen.cs" />
     <Compile Include="Evaluations\AndEvaluation.cs" />
@@ -65,7 +66,7 @@
     <Compile Include="Conjunctions\When.cs" />
     <Compile Include="Actions\EvaluationAction.cs" />
     <Compile Include="Evaluations\Evaluation.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="FluentEvaluator.snk" />
