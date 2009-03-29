@@ -12,6 +12,8 @@
     <AssemblyName>FluentEvaluator</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>FluentEvaluator.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\Otherwise.cs" />
+    <Compile Include="CommonAssemblyInfo.cs" />
     <Compile Include="Conjunctions\And.cs" />
     <Compile Include="Conjunctions\AndWhen.cs" />
     <Compile Include="Evaluations\AndEvaluation.cs" />
@@ -63,6 +66,9 @@
     <Compile Include="Actions\EvaluationAction.cs" />
     <Compile Include="Evaluations\Evaluation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FluentEvaluator.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
