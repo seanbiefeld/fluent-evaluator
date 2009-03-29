@@ -8,18 +8,48 @@ namespace FluentEvaluator
 	{
 		public static bool CheckIfObjectToEvaluateIsEmpty(object objectToEvaluate)
 		{
+			return PerfromEmptyCheck(objectToEvaluate, EmptyCheckType.IsEmpty);
+		}
+
+		private static bool PerfromEmptyCheck(object objectToEvaluate, EmptyCheckType emptyCheckType)
+		{
 			if (objectToEvaluate != null)
 			{
-				ICollection objectCollection = objectToEvaluate as ICollection;
-				if (objectCollection != null)
-					return (objectCollection.Count == 0);
+				switch (emptyCheckType)
+				{
+					case EmptyCheckType.IsEmpty:
+						{
+							ICollection objectCollection = objectToEvaluate as ICollection;
+							if (objectCollection != null)
+								return (objectCollection.Count == 0);
+							
 
-				string objectString = objectToEvaluate as string;
-				if (objectString != null)
-					return (objectString.Length == 0);
+							string objectString = objectToEvaluate as string;
+							if (objectString != null)
+								return (objectString.Length == 0);
 
+							break;
+						}
+					case EmptyCheckType.IsNotEmpty:
+						{
+							ICollection objectCollection = objectToEvaluate as ICollection;
+							if (objectCollection != null)
+								return (objectCollection.Count >= 1);
+
+							string objectString = objectToEvaluate as string;
+							if (objectString != null)
+								return (objectString.Length >= 1);
+
+							break;
+						}
+				}
 			}
 			return false;
+		}
+
+		public static bool CheckIfObjectToEvaluateIsNotEmpty(object objectToEvaluate)
+		{
+			return PerfromEmptyCheck(objectToEvaluate, EmptyCheckType.IsNotEmpty);
 		}
 
 		public static Type[] GetConstructorTypes(object[] arguments)
@@ -40,5 +70,11 @@ namespace FluentEvaluator
 				(string.Format("Please provide a satisfaction to match against."))
 				.Evaluate();
 		}
+	}
+
+	public enum EmptyCheckType
+	{
+		IsEmpty,
+		IsNotEmpty
 	}
 }

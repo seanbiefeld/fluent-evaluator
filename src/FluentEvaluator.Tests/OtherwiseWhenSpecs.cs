@@ -106,7 +106,27 @@ namespace FluentEvaluator.Tests
 
 		[Test]
 		[Observation]
-		public void count_should_equal_()
+		public void count_should_equal_two()
+		{
+			count.ShouldEqual(2);
+		}
+	}
+
+	[TestFixture]
+	[Concern("otherwise when")]
+	public class when_there_is_just_a_single_otherwise_when_using_an_evaluation : OtherwiseWhenSpecs
+	{
+		protected override void Context()
+		{
+			When.This("").IsNotEmpty.DoThis(() => count = 1)
+				.Otherwise.When.This("fry").IsNotEmpty.DoThis(() => count = 2)
+				.Otherwise.When.This(42).EqualsThis(43).DoThis(() => count = 3)
+			.Evaluate();
+		}
+
+		[Test]
+		[Observation]
+		public void count_should_equal_two()
 		{
 			count.ShouldEqual(2);
 		}

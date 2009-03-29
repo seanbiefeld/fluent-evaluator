@@ -58,6 +58,17 @@ namespace FluentEvaluator.Evaluations
 			}
 		}
 
+		public EvaluationAction IsNotEmpty
+		{
+			get
+			{
+				if (EvaluationToPerform)
+					EvaluationToPerform &= EvaluationUtilities.CheckIfObjectToEvaluateIsNotEmpty(ObjectToEvaluate);
+
+				return new EvaluationAction(ObjectToEvaluate, EvaluationToPerform, ContinueEvaluations);
+			}
+		}
+
 		public EvaluationAction EqualsThis(object objectToEqual)
 		{
 			if (EvaluationToPerform)

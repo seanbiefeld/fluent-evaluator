@@ -49,6 +49,15 @@ namespace FluentEvaluator.Evaluations
 			}
 		}
 
+		public SingularAction<TypeToEvaluate> IsNotEmpty
+		{
+			get
+			{
+				EvaluationToPerform = EvaluationUtilities.CheckIfObjectToEvaluateIsNotEmpty(ObjectToEvaluate);
+				return new SingularAction<TypeToEvaluate>(ObjectToEvaluate, EvaluationToPerform);
+			}
+		}
+
 		public SingularAction<TypeToEvaluate> EqualsThis(object objectToEqual)
 		{
 			EvaluationToPerform = (ObjectToEvaluate.Equals(objectToEqual));

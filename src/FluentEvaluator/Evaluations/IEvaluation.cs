@@ -9,6 +9,8 @@ namespace FluentEvaluator.Evaluations
 
 		TypeOfAction IsEmpty{ get; }
 
+		TypeOfAction IsNotEmpty { get; }
+
 		TypeOfAction EqualsThis(object objectToEqual);
 
 		TypeOfAction IsNotNull{ get; }
