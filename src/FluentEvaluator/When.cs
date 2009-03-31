@@ -1,7 +1,7 @@
 ﻿using FluentEvaluator.Actions;
 using FluentEvaluator.Evaluations;
 
-namespace FluentEvaluator.Conjunctions
+namespace FluentEvaluator
 {
 	public class When
 	{

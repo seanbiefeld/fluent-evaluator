@@ -1,5 +1,4 @@
-﻿using FluentEvaluator.Conjunctions;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using SpecUnit;
 
 namespace FluentEvaluator.Tests
