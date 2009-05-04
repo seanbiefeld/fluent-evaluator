@@ -54,10 +54,13 @@
     </Compile>
     <Compile Include="AndEvaluations.cs" />
     <Compile Include="ConjunctionBoolSpecs.cs" />
+    <Compile Include="EqualsNumericEvaluations.cs" />
     <Compile Include="EvaluationActions.cs" />
     <Compile Include="EvaluationSpecs.cs" />
     <Compile Include="EvaluationUtilitiesSpecs.cs" />
     <Compile Include="IsNotEmptyEvaluation.cs" />
+    <Compile Include="GreaterThanNumericEvaluations.cs" />
+    <Compile Include="LessThanNumericEvaluations.cs" />
     <Compile Include="OrEvaluations.cs" />
     <Compile Include="OtherwiseSpecs.cs" />
     <Compile Include="OtherwiseWhenSpecs.cs" />

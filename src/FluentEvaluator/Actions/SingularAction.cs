@@ -15,7 +15,7 @@ namespace FluentEvaluator.Actions
          	{
          		try
          		{
-         			ConstructorInfo currentCtorInfo = typeof(TypeToEvaluate).GetConstructor(EvaluationUtilities.GetConstructorTypes(arguments));
+					ConstructorInfo currentCtorInfo = typeof(TypeToEvaluate).GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public, null, EvaluationUtilities.GetConstructorTypes(arguments), null);
          			ObjectToEvaluate = currentCtorInfo == null ? default(TypeToEvaluate) : currentCtorInfo.Invoke(arguments);
          		}
          		catch (Exception ex)

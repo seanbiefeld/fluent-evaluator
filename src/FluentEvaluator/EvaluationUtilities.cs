@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace FluentEvaluator
 {
-	public class EvaluationUtilities
+	public sealed class EvaluationUtilities
 	{
 		public static bool CheckIfObjectToEvaluateIsEmpty(object objectToEvaluate)
 		{
@@ -69,11 +69,42 @@ namespace FluentEvaluator
 				(string.Format("Please provide a satisfaction to match against."))
 				.Evaluate();
 		}
+
+		public static CompareType GetComparisonType(int comparisonValue)
+		{
+			switch (comparisonValue)
+			{
+				case -1:
+					{
+						return CompareType.LessThan;
+					}
+				case 0:
+					{
+						return CompareType.EqualTo;
+					}
+				case 1:
+					{
+						return CompareType.GreaterThan;
+					}
+				default:
+					{
+						return CompareType.InvalidComparison;
+					}
+			}
+		}
 	}
 
 	public enum EmptyCheckType
 	{
 		IsEmpty,
 		IsNotEmpty
+	}
+
+	public enum CompareType
+	{
+		LessThan,
+		EqualTo,
+		GreaterThan,
+		InvalidComparison
 	}
 }

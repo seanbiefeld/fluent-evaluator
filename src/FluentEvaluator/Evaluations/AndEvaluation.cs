@@ -3,7 +3,7 @@ using FluentEvaluator.Actions;
 
 namespace FluentEvaluator.Evaluations
 {
-	public class AndEvaluation<TypeToEvaluate> : IEvaluation<EvaluationAction, TypeToEvaluate>
+	public class AndEvaluation<TypeToEvaluate> : IObjectEvaluation<EvaluationAction, TypeToEvaluate>
 	{
 		public AndEvaluation(TypeToEvaluate objectToEvaluate, bool conjuctiveEvaluation, bool continueEvaluations)
 		{
@@ -69,7 +69,7 @@ namespace FluentEvaluator.Evaluations
 			}
 		}
 
-		public EvaluationAction EqualsThis(object objectToEqual)
+		public EvaluationAction EqualsThis(TypeToEvaluate objectToEqual)
 		{
 			if (EvaluationToPerform)
 				EvaluationToPerform &= (ObjectToEvaluate.Equals(objectToEqual));

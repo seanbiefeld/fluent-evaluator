@@ -50,7 +50,7 @@ namespace FluentEvaluator.Actions
 		{
 			Action otherwiseActionToPerform = () =>
           	{
-          		ConstructorInfo currentCtorInfo = typeof(ExceptionType).GetConstructor(EvaluationUtilities.GetConstructorTypes(exceptionArguments));
+				ConstructorInfo currentCtorInfo = typeof(ExceptionType).GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public, null, EvaluationUtilities.GetConstructorTypes(exceptionArguments), null);
 
           		if (currentCtorInfo != null)
           			throw (ExceptionType)currentCtorInfo.Invoke(exceptionArguments);

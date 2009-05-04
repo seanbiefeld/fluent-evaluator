@@ -106,9 +106,11 @@ namespace FluentEvaluator.Tests
 	[Concern("or equal evaluations")]
 	public class when_using_an_or_expression_and_checking_equals_and_it_does_equal : OrEvaluations
 	{
+		private string stringToCompare = "foo";
+
 		protected override void Context()
 		{
-			When.This(1).EqualsThis(1).Or.When.This(3).EqualsThis(2).DoThis(() => _count++).Evaluate();
+			When.This(stringToCompare).EqualsThis("foo").Or.When.This(stringToCompare).EqualsThis(string.Empty).DoThis(() => _count++).Evaluate();
 		}
 
 		[Test]

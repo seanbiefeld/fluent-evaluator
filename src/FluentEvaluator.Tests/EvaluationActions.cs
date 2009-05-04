@@ -40,7 +40,7 @@ namespace FluentEvaluator.Tests
 	}
 
 	[TestFixture]
-	[Concern("Fluent Evaluation")]
+	[Concern("Fluent ObjectEvaluation")]
 	public class when_throws_an_excepiton : EvaluationActionsSpecs
 	{
 		[Test]

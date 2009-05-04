@@ -6,12 +6,6 @@ namespace FluentEvaluator.Actions
 {
 	public class EvaluationAction : IEvaluationAction
 	{
-		//public EvaluationAction(object objectToEvaluate, bool evaluationToPerform)
-		//{
-		//    ObjectToEvaluate = objectToEvaluate;
-		//    EvaluationToPerform = evaluationToPerform;
-		//}
-
 		public EvaluationAction(object objectToEvaluate, bool evaluationToPerform, bool continueEvaluations)
 		{
 			ObjectToEvaluate = objectToEvaluate;
@@ -74,7 +68,7 @@ namespace FluentEvaluator.Actions
 		{
 			ActionToPerformAfterEvaluation = () =>
          	{
-         		ConstructorInfo currentCtorInfo = typeof(ExceptionType).GetConstructor(EvaluationUtilities.GetConstructorTypes(exceptionArguments));
+				ConstructorInfo currentCtorInfo = typeof(ExceptionType).GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public, null, EvaluationUtilities.GetConstructorTypes(exceptionArguments), null);
 
          		if (currentCtorInfo != null)
          			throw (ExceptionType)currentCtorInfo.Invoke(exceptionArguments);

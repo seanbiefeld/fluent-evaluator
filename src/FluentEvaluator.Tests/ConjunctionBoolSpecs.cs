@@ -83,4 +83,29 @@ namespace FluentEvaluator.Tests
 			_myNumber.ShouldEqual(13);
 		}
 	}
+
+	[TestFixture]
+	[Concern("Two Plus conjunctions")]
+	public class when_they_are_true : ContextSpecification
+	{
+		private bool actionWasPerformed;
+
+		protected override void Context()
+		{
+			When.This(true)
+				.Or.When.This(false)
+				.Or.When.This(false)
+				.DoThis(() => actionWasPerformed = true)
+				.Evaluate();
+		}
+
+		[Test]
+		[Observation]
+		public void should_perfomr_action()
+		{
+			actionWasPerformed.ShouldBeTrue();
+		}
+
+	}
+
 }

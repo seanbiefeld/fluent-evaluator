@@ -13,7 +13,7 @@ namespace FluentEvaluator.Tests
 	}
 
 	[TestFixture]
-	[Concern("Is Not Empty Evaluation")]
+	[Concern("Is Not Empty ObjectEvaluation")]
 	public class when_evaluating_if_an_non_empty_string_is_not_empty : IsNotEmptyEvaluation
 	{
 		protected override void Context()
@@ -33,7 +33,7 @@ namespace FluentEvaluator.Tests
 	}
 
 	[TestFixture]
-	[Concern("Is Not Empty Evaluation")]
+	[Concern("Is Not Empty ObjectEvaluation")]
 	public class when_evaluating_if_an_empty_string_is_not_empty : IsNotEmptyEvaluation
 	{
 		protected override void Context()
@@ -53,7 +53,7 @@ namespace FluentEvaluator.Tests
 	}
 
 	[TestFixture]
-	[Concern("Is Not Empty Evaluation")]
+	[Concern("Is Not Empty ObjectEvaluation")]
 	public class when_evaluating_if_an_non_empty_collection_is_not_empty : IsNotEmptyEvaluation
 	{
 		protected override void Context()
@@ -73,7 +73,7 @@ namespace FluentEvaluator.Tests
 	}
 
 	[TestFixture]
-	[Concern("Is Not Empty Evaluation")]
+	[Concern("Is Not Empty ObjectEvaluation")]
 	public class when_evaluating_if_an_empty_collection_is_not_empty : IsNotEmptyEvaluation
 	{
 		protected override void Context()
@@ -93,7 +93,7 @@ namespace FluentEvaluator.Tests
 	}
 
 	[TestFixture]
-	[Concern("Is Not Empty Evaluation")]
+	[Concern("Is Not Empty ObjectEvaluation")]
 	public class when_evaluating_if_a_null_is_not_empty : IsNotEmptyEvaluation
 	{
 		protected override void Context()
@@ -113,12 +113,12 @@ namespace FluentEvaluator.Tests
 	}
 
 	[TestFixture]
-	[Concern("Is Not Empty Evaluation")]
+	[Concern("Is Not Empty ObjectEvaluation")]
 	public class when_evaluating_if_a_non_collection_or_non_string_is_not_empty : IsNotEmptyEvaluation
 	{
 		protected override void Context()
 		{
-			When.This(42).IsNotEmpty
+			When.This(new TestableFoo()).IsNotEmpty
 				.DoThis(() => _actionWasPerformed = true).Evaluate();
 		}
 
