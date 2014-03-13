@@ -1,14 +1,16 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentEvaluator", "FluentEvaluator\FluentEvaluator.csproj", "{29402162-E353-4B2C-B074-9547D0BC410A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentEvaluator.Tests", "FluentEvaluator.Tests\FluentEvaluator.Tests.csproj", "{0CC67694-D806-43EC-982C-1F6828832E4A}"
-EndProject
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{4482431A-98EF-4792-A8DC-40FFD682DC2C}"
 	ProjectSection(SolutionItems) = preProject
 		CommonAssemblyInfo.cs = CommonAssemblyInfo.cs
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentEvaluator", "FluentEvaluator\FluentEvaluator.csproj", "{29402162-E353-4B2C-B074-9547D0BC410A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentEvaluator.Tests", "FluentEvaluator.Tests\FluentEvaluator.Tests.csproj", "{0CC67694-D806-43EC-982C-1F6828832E4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,0 +1,9 @@
+G:\dev\fluent-evaluator\src\FluentEvaluator.Tests\bin\Debug\FluentEvaluator.Tests.dll
+G:\dev\fluent-evaluator\src\FluentEvaluator.Tests\bin\Debug\FluentEvaluator.Tests.pdb
+G:\dev\fluent-evaluator\src\FluentEvaluator.Tests\bin\Debug\FluentEvaluator.dll
+G:\dev\fluent-evaluator\src\FluentEvaluator.Tests\bin\Debug\nunit.framework.dll
+G:\dev\fluent-evaluator\src\FluentEvaluator.Tests\bin\Debug\SpecUnit.dll
+G:\dev\fluent-evaluator\src\FluentEvaluator.Tests\bin\Debug\FluentEvaluator.pdb
+G:\dev\fluent-evaluator\src\FluentEvaluator.Tests\obj\Debug\FluentEvaluator.Tests.csprojResolveAssemblyReference.cache
+G:\dev\fluent-evaluator\src\FluentEvaluator.Tests\obj\Debug\FluentEvaluator.Tests.dll
+G:\dev\fluent-evaluator\src\FluentEvaluator.Tests\obj\Debug\FluentEvaluator.Tests.pdb

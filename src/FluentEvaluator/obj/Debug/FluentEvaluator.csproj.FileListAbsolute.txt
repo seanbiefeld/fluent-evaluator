@@ -1,0 +1,5 @@
+G:\dev\fluent-evaluator\src\FluentEvaluator\bin\Debug\FluentEvaluator.dll
+G:\dev\fluent-evaluator\src\FluentEvaluator\bin\Debug\FluentEvaluator.pdb
+G:\dev\fluent-evaluator\src\FluentEvaluator\obj\Debug\FluentEvaluator.csprojResolveAssemblyReference.cache
+G:\dev\fluent-evaluator\src\FluentEvaluator\obj\Debug\FluentEvaluator.dll
+G:\dev\fluent-evaluator\src\FluentEvaluator\obj\Debug\FluentEvaluator.pdb

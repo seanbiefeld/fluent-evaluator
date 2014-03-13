@@ -9,7 +9,6 @@ namespace FluentEvaluator.Tests
 
 	#region when is null creation specs
 
-	[TestFixture]
 	[Concern("Fluent Evaluator")]
 	public class when_creating_on_null : EvaluationActionsSpecs
 	{
@@ -20,7 +19,6 @@ namespace FluentEvaluator.Tests
 			_testableFoo = When.This(_testableFoo).IsNull.CreateIt();
 		}
 
-		[Test]
 		[Observation]
 		public void should_be_a_new_instance()
 		{
